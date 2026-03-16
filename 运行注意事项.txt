@@ -1,0 +1,62 @@
+运行代码注意写在一行，因为我们是powershell:
+python .\main.py --global_model chavinlo/alpaca-native --data_path "./data" --output_dir "./lora-shepherd-7b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs --group_by_length
+
+如果是linux：
+python ./main.py --global_model chavinlo/alpaca-native --data_path "./data" --output_dir "./lora-shepherd-7b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs --group_by_length
+
+或者先把模型下载下来
+python .\main.py --global_model "E:\models\alpaca-native" --data_path "./data" --output_dir "./lora-shepherd-7b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs --group_by_length
+
+设置huggingface国内镜像：
+export HF_ENDPOINT=https://hf-mirror.com
+
+使用本地下载的千问大模型：
+python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs --group_by_length
+
+python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs
+
+fl/models/Qwen/Qwen3___5-2B-Base
+
+python ./main.py --global_model "/root/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs --group_by_length
+
+
+python ./main.py \
+--global_model "/root/fl/models/Qwen/Qwen3___5-2B-Base" \
+--data_path "./data" \
+--output_dir "./lora-qwen-2b-test/" \
+--num_communication_rounds 10 \
+--num_clients 10 \
+--local_batch_size 64 \
+--local_micro_batch_size 32 \
+--local_num_epochs 2 \
+--cutoff_len 256 \
+--train_on_inputs
+
+python ./main.py \
+  --global_model "chavinlo/alpaca-native" \
+  --data_path "./data" \
+  --output_dir "./lora-shepherd-7b-test/" \
+  --num_communication_rounds 1 \
+  --num_clients 10 \
+  --client_selection_frac 0.5 \
+  --local_num_epochs 1 \
+  --local_batch_size 1 \
+  --local_micro_batch_size 1 \
+  --local_learning_rate 0.0003 \
+  --cutoff_len 128 \
+  --lora_r 8 \
+  --lora_target_modules "[q_proj,k_proj,v_proj,o_proj]" \
+  --train_on_inputs
+
+python /root/fl/fedlora/FedLoRA/GlobalModel_generate.py \
+  --base_model "/root/fl/models/Qwen/Qwen3___5-2B-Base" \
+  --lora_weights_path "/root/fl/fedlora/FedLoRA/lora-qwen-2b-test/10/0/adapter_model.bin" \
+  --lora_config_path "/root/fl/fedlora/FedLoRA/lora-qwen-2b-test/10"
+
+
+ssh -p 29038 root@connect.westd.seetacloud.com
+ssh -L 7860:127.0.0.1:7860 root@connect.westd.seetacloud.com
+
+ssh -p 29038 -L 7860:127.0.0.1:7860 root@connect.westd.seetacloud.com
+
+      

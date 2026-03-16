@@ -52,7 +52,7 @@ class GeneralClient:
             fp16=True,
             logging_steps=1,
             optim="adamw_torch",
-            evaluation_strategy="steps" if self.local_val_set_size > 0 else "no",
+            eval_strategy="steps" if self.local_val_set_size > 0 else "no",
             save_strategy="steps",
             eval_steps=200 if self.local_val_set_size > 0 else None,
             save_steps=200,
@@ -60,7 +60,6 @@ class GeneralClient:
             save_total_limit=1,
             load_best_model_at_end=True if self.local_val_set_size > 0 else False,
             ddp_find_unused_parameters=False if ddp else None,
-            group_by_length=group_by_length,
             dataloader_drop_last=False
         )
         self.local_trainer = transformers.Trainer(model=self.model,

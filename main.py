@@ -123,7 +123,6 @@ def fl_finetune(
     else:
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
-            load_in_8bit=False,
             torch_dtype=torch.float32,
             device_map=device_map,
             token=keys["hf_token"],
