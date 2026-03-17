@@ -7,7 +7,6 @@ from transformers import LlamaTokenizer, LlamaForCausalLM, AutoModelForCausalLM,
 from peft import (
     LoraConfig,
     get_peft_model,
-    prepare_model_for_kbit_training,
 )
 from fed_utils import (
     FedAvg,
@@ -120,21 +119,21 @@ def fl_finetune(
         model = GPT2LMHeadModel.from_pretrained(
             global_model,
             load_in_8bit=False,
-            torch_dtype=load_dtype,
+            dtype=load_dtype,
             device_map=device_map,
         )
     elif global_model == 'google/gemma-2b' or global_model == 'google/gemma-7b':
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
             load_in_8bit=False,
-            torch_dtype=load_dtype,
+            dtype=load_dtype,
             device_map=device_map,
             token=keys["hf_token"],
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
-            torch_dtype=load_dtype,
+            dtype=load_dtype,
             device_map=device_map,
             token=keys["hf_token"],
         )
@@ -194,7 +193,6 @@ def fl_finetune(
                                                                     ]  # could be sped up, probably
         return tokenized_full_prompt
 
-    model = prepare_model_for_kbit_training(model)
     model.gradient_checkpointing_enable()
     config = LoraConfig(
         r=lora_r,
