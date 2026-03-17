@@ -98,23 +98,20 @@ def global_evaluation(model, tokenizer, prompter, dev_data_path):
     total_count_dict = dict.fromkeys(label_set, 0)
     acc_count_dict = dict.fromkeys(label_set, 0)
 
-    if model_type == "llama":
-        sampling = GenerationConfig(
-            do_sample=False,
-            temperature=0.0,
-            top_p=1.0,
-            top_k=50,
-            num_beams=1,
-            max_new_tokens=max_new_token,
+    sampling_kwargs = {
+        "do_sample": False,
+        "num_beams": 1,
+        "max_new_tokens": max_new_token,
+    }
+    if model_type == "gpt2":
+        sampling_kwargs.update(
+            {
+                "bos_token_id": 50256,
+                "eos_token_id": 50256,
+                "_from_model_config": True,
+            }
         )
-    elif model_type == "gpt2":
-        sampling = GenerationConfig(
-            bos_token_id=50256,
-            eos_token_id=50256,
-            _from_model_config=True,
-        )
-    else:
-        sampling = GenerationConfig(max_new_tokens=max_new_token)
+    sampling = GenerationConfig(**sampling_kwargs)
 
     model_device = next(model.parameters()).device
     autocast_enabled = model_device.type == "cuda"

@@ -108,9 +108,6 @@ def main(
     def evaluate(
         instruction,
         input=None,
-        temperature=0.1,
-        top_p=0.75,
-        top_k=40,
         num_beams=4,
         max_new_tokens=128,
         stream_output=True,
@@ -120,9 +117,7 @@ def main(
         inputs = tokenizer(prompt, return_tensors="pt")
         input_ids = inputs["input_ids"].to(device)
         generation_config = GenerationConfig(
-            temperature=temperature,
-            top_p=top_p,
-            top_k=top_k,
+            do_sample=False,
             num_beams=num_beams,
             **kwargs,
         )
@@ -188,15 +183,6 @@ def main(
                 placeholder="Tell me about alpacas.",
             ),
             gr.components.Textbox(lines=2, label="Input", placeholder="none"),
-            gr.components.Slider(
-                minimum=0, maximum=1, value=0.1, label="Temperature"
-            ),
-            gr.components.Slider(
-                minimum=0, maximum=1, value=0.75, label="Top p"
-            ),
-            gr.components.Slider(
-                minimum=0, maximum=100, step=1, value=40, label="Top k"
-            ),
             gr.components.Slider(
                 minimum=1, maximum=4, step=1, value=4, label="Beams"
             ),
