@@ -6,6 +6,7 @@ import torch
 from transformers import LlamaTokenizer, LlamaForCausalLM, AutoModelForCausalLM, AutoTokenizer, GPT2LMHeadModel, GPT2Tokenizer
 from peft import (
     LoraConfig,
+    cast_mixed_precision_params,
     get_peft_model,
 )
 from fed_utils import (
@@ -203,6 +204,8 @@ def fl_finetune(
         task_type="CAUSAL_LM",
     )
     model = get_peft_model(model, config)
+    if use_cuda and load_dtype in (torch.float16, torch.bfloat16):
+        cast_mixed_precision_params(model, load_dtype)
     if not ddp and torch.cuda.device_count() > 1:
         model.is_parallelizable = True
         model.model_parallel = True
