@@ -43,13 +43,14 @@ class GeneralClient:
                             local_learning_rate,
                             group_by_length,
                             ddp):
+        use_cuda = torch.cuda.is_available()
         self.train_args = transformers.TrainingArguments(
             per_device_train_batch_size=local_micro_batch_size,
             gradient_accumulation_steps=gradient_accumulation_steps,
             warmup_steps=0,
             num_train_epochs=local_num_epochs,
             learning_rate=local_learning_rate,
-            fp16=True,
+            fp16=use_cuda,
             logging_steps=1,
             optim="adamw_torch",
             eval_strategy="steps" if self.local_val_set_size > 0 else "no",
@@ -60,7 +61,8 @@ class GeneralClient:
             save_total_limit=1,
             load_best_model_at_end=True if self.local_val_set_size > 0 else False,
             ddp_find_unused_parameters=False if ddp else None,
-            dataloader_drop_last=False
+            dataloader_drop_last=False,
+            dataloader_pin_memory=use_cuda,
         )
         self.local_trainer = transformers.Trainer(model=self.model,
                                                   train_dataset=self.local_train_dataset,

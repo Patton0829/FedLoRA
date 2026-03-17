@@ -3,13 +3,20 @@ from typing import List
 from tqdm import tqdm
 import fire
 import torch
-from transformers import LlamaTokenizer, LlamaForCausalLM, AutoModelForCausalLM, AutoTokenizer, GPT2LMHeadModel
+from transformers import LlamaTokenizer, LlamaForCausalLM, AutoModelForCausalLM, AutoTokenizer, GPT2LMHeadModel, GPT2Tokenizer
 from peft import (
     LoraConfig,
     get_peft_model,
     prepare_model_for_kbit_training,
 )
-from fed_utils import FedAvg, client_selection, global_evaluation, GeneralClient
+from fed_utils import (
+    FedAvg,
+    client_selection,
+    global_evaluation,
+    save_acc_history,
+    plot_acc_curve,
+    GeneralClient,
+)
 import datasets
 from utils.prompter import Prompter
 import json
@@ -30,7 +37,7 @@ def fl_finetune(
         # FL hyperparamas
         client_selection_strategy: str = 'random',
         client_selection_frac: float = 0.1,
-        num_communication_rounds: int = 50,
+        num_communication_rounds: int = 10,
         num_clients: int = 10,
         # Local training hyperparams
         local_batch_size: int = 64,  # 64,
@@ -84,17 +91,21 @@ def fl_finetune(
     ), "Please specify a --global_model, e.g. --global_modell='decapoda-research/llama-7b-hf'"
 
     data_path = os.path.join(data_path, str(num_clients))
-    assert (os.path.exists(data_path), "Please generate the data files for each client")
+    assert os.path.exists(data_path), "Please generate the data files for each client"
 
     # set up the global model & toknizer
     gradient_accumulation_steps = local_batch_size // local_micro_batch_size
     prompter = Prompter(prompt_template_name)
-    device_map = "auto"
+    use_cuda = torch.cuda.is_available()
+    load_dtype = torch.float16 if use_cuda else torch.float32
+    device_map = {"": 0} if use_cuda else None
     world_size = int(os.environ.get("WORLD_SIZE", 1))
     ddp = world_size != 1
     if ddp:
         device_map = {"": int(os.environ.get("LOCAL_RANK") or 0)}
         gradient_accumulation_steps = gradient_accumulation_steps // world_size
+    elif not use_cuda:
+        print("CUDA is not available. Training will run on CPU and will be very slow.")
 
     # model = LlamaForCausalLM.from_pretrained(
     #     global_model,
@@ -109,21 +120,21 @@ def fl_finetune(
         model = GPT2LMHeadModel.from_pretrained(
             global_model,
             load_in_8bit=False,
-            torch_dtype=torch.float32,
+            torch_dtype=load_dtype,
             device_map=device_map,
         )
     elif global_model == 'google/gemma-2b' or global_model == 'google/gemma-7b':
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
             load_in_8bit=False,
-            torch_dtype=torch.float32,
+            torch_dtype=load_dtype,
             device_map=device_map,
             token=keys["hf_token"],
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
-            torch_dtype=torch.float32,
+            torch_dtype=load_dtype,
             device_map=device_map,
             token=keys["hf_token"],
         )
@@ -184,6 +195,7 @@ def fl_finetune(
         return tokenized_full_prompt
 
     model = prepare_model_for_kbit_training(model)
+    model.gradient_checkpointing_enable()
     config = LoraConfig(
         r=lora_r,
         lora_alpha=lora_alpha,
@@ -202,6 +214,7 @@ def fl_finetune(
     last_client_id = None
     local_dataset_len_dict = dict()
     output_dir = os.path.join(output_dir, str(num_clients))
+    result_dir = os.path.join("./resault", str(num_clients))
 
     acc_list = []
 
@@ -249,18 +262,12 @@ def fl_finetune(
         acc = global_evaluation(model, tokenizer, prompter, dev_data_path)
         print('Acc of Epoch', str(epoch), 'is:', acc)
         acc_list.append(acc)
+        save_acc_history(acc_list, result_dir)
+        plot_acc_curve(acc_list, result_dir)
 
 
-    print(acc_list)          
-    #os.system("lm_eval --model_args pretrained=huggyllama/llama-7b,parallelize=True,load_in_4bit=False,peft={current_dir} --tasks arc_challenge,mmlu --device cuda --output_path {current_dir}".format(current_dir = os.path.join(output_dir, str(epoch))))
-    filename = output_dir + 'log.txt'
-    file = open(filename,'a')
-    for i in range(len(acc_list)):
-        s = str(acc_list[i]).replace('[','').replace(']','')
-        s = s.replace("'",'').replace(',','') +'\n'
-        file.write(s)
-    file.close()
-    print("Log Saved")
+    print(acc_list)
+    print("Accuracy history and curve saved.")
 
 
 if __name__ == "__main__":

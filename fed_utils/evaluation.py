@@ -10,6 +10,7 @@ import csv
 from peft import set_peft_model_state_dict
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 
 model_type = 'llama'
 datasets.utils.logging.set_verbosity_error()
@@ -25,6 +26,38 @@ def setup_seed(seed):
     torch.backends.cudnn.deterministic = True
 
 setup_seed(1)
+
+
+def save_acc_history(acc_list, save_dir, filename="acc_history.json"):
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, filename)
+    history = []
+    for round_idx, acc in enumerate(acc_list, start=1):
+        history.append({"round": round_idx, "acc": float(acc)})
+
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+    return save_path
+
+
+def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png"):
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, filename)
+
+    rounds = list(range(1, len(acc_list) + 1))
+    plt.figure(figsize=(8, 5))
+    plt.plot(rounds, acc_list, marker="o", linewidth=2)
+    plt.title("Global Evaluation Accuracy")
+    plt.xlabel("Communication Round")
+    plt.ylabel("Accuracy")
+    plt.xticks(rounds)
+    plt.grid(True, linestyle="--", alpha=0.6)
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=300)
+    plt.close()
+
+    return save_path
 
 def global_evaluation(model, tokenizer, prompter, dev_data_path):
     data_class =  ['abstract_algebra', 'anatomy', 'astronomy', 'business_ethics', 'clinical_knowledge', 'college_biology', 'college_chemistry', 'college_computer_science', 'college_mathematics', 'college_medicine', 'college_physics', 'computer_security', 'conceptual_physics', 'econometrics', 'electrical_engineering', 'elementary_mathematics', 'formal_logic', 'global_facts', 'high_school_biology', 'high_school_chemistry', 'high_school_computer_science', 'high_school_european_history', 'high_school_geography', 'high_school_government_and_politics', 'high_school_macroeconomics', 'high_school_mathematics', 'high_school_microeconomics', 'high_school_physics', 'high_school_psychology', 'high_school_statistics', 'high_school_us_history', 'high_school_world_history', 'human_aging', 'human_sexuality', 'international_law', 'jurisprudence', 'logical_fallacies', 'machine_learning', 'management', 'marketing', 'medical_genetics', 'miscellaneous', 'moral_disputes', 'moral_scenarios', 'nutrition', 'philosophy', 'prehistory', 'professional_accounting', 'professional_law', 'professional_medicine', 'professional_psychology', 'public_relations', 'security_studies', 'sociology', 'us_foreign_policy', 'virology', 'world_religions']
@@ -67,9 +100,11 @@ def global_evaluation(model, tokenizer, prompter, dev_data_path):
             'The answer is: ',
         )
 
-        with torch.autocast("cuda"):
+        model_device = next(model.parameters()).device
+        autocast_enabled = model_device.type == "cuda"
+        with torch.autocast(device_type="cuda", enabled=autocast_enabled):
             inputs = tokenizer(test_prompt, return_tensors="pt")
-            input =inputs["input_ids"].to('cuda')
+            input = inputs["input_ids"].to(model_device)
             with torch.no_grad():
                 #print(tokenizer.eos_token_id, tokenizer.pad_token_id)
                 generation_output = model.generate(

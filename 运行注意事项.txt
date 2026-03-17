@@ -17,9 +17,6 @@ python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_pat
 
 fl/models/Qwen/Qwen3___5-2B-Base
 
-python ./main.py --global_model "/root/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 10 --num_clients 10 --train_on_inputs --group_by_length
-
-
 python ./main.py \
 --global_model "/root/fl/models/Qwen/Qwen3___5-2B-Base" \
 --data_path "./data" \
@@ -54,9 +51,6 @@ python /root/fl/fedlora/FedLoRA/GlobalModel_generate.py \
   --lora_config_path "/root/fl/fedlora/FedLoRA/lora-qwen-2b-test/10"
 
 
-ssh -p 29038 root@connect.westd.seetacloud.com
-ssh -L 7860:127.0.0.1:7860 root@connect.westd.seetacloud.com
-
-ssh -p 29038 -L 7860:127.0.0.1:7860 root@connect.westd.seetacloud.com
+python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 5 --num_clients 10 --train_on_inputs --local_micro_batch_size 1 --local_batch_size 8
 
       
