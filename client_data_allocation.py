@@ -90,7 +90,7 @@ if diff_quantity:
         idx_partition = [[] for _ in range(num_clients)]
         for category in categories:
             category_rows = remaining_df.loc[remaining_df["category"] == category]
-            category_indices = category_rows.index.values
+            category_indices = category_rows.index.values.copy()
             np.random.shuffle(category_indices)
 
             proportions = np.random.dirichlet(np.repeat(alpha, num_clients))
