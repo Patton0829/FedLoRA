@@ -49,6 +49,10 @@ records = [standardize_record(record) for record in df.to_dict(orient="records")
 df = pd.DataFrame(records)
 df["category"] = [record.get("output", "") for record in records]
 
+
+def remove_category_column(dataframe):
+    return dataframe.drop(columns=["category"], errors="ignore")
+
 sorted_df = df.sort_values(by=["category"]).reset_index(drop=True)
 grouped = sorted_df.groupby("category", group_keys=False)
 sampled_df = grouped.apply(lambda x: x.sample(n=min(10, len(x)), random_state=seed))
@@ -60,7 +64,7 @@ os.makedirs(data_path, exist_ok=True)
 
 with open(os.path.join(data_path, "global_training.json"), "w", encoding="utf-8") as outfile:
     json.dump(
-        remaining_df.drop(columns=["category"]).to_dict(orient="records"),
+        remove_category_column(remaining_df).to_dict(orient="records"),
         outfile,
         ensure_ascii=False,
         indent=2,
@@ -68,7 +72,7 @@ with open(os.path.join(data_path, "global_training.json"), "w", encoding="utf-8"
 
 with open(os.path.join(data_path, "global_test.json"), "w", encoding="utf-8") as outfile:
     json.dump(
-        sampled_df.drop(columns=["category"]).to_dict(orient="records"),
+        remove_category_column(sampled_df).to_dict(orient="records"),
         outfile,
         ensure_ascii=False,
         indent=2,
@@ -113,7 +117,7 @@ client_distribution = {}
 for client_id, idx in enumerate(idx_partition):
     print(f"\n Generating the local training dataset of Client_{client_id}")
     sub_remaining_df = remaining_df.loc[idx].reset_index(drop=True)
-    sub_remaining_df_records = sub_remaining_df.drop(columns=["category"]).to_dict(orient="records")
+    sub_remaining_df_records = remove_category_column(sub_remaining_df).to_dict(orient="records")
     print(f"Local sample count of Client_{client_id}: {len(sub_remaining_df_records)}")
     client_distribution[client_id] = sub_remaining_df["category"].value_counts().to_dict()
 
