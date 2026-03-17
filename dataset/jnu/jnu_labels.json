@@ -1,0 +1,6002 @@
+[
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "inner race fault"
+  },
+  {
+    "output": "ball fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "outer race fault"
+  },
+  {
+    "output": "normal"
+  },
+  {
+    "output": "outer race fault"
+  }
+]

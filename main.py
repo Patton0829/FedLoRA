@@ -32,13 +32,13 @@ def fl_finetune(
         # model/data params
         global_model: str = '',
         data_path: str = './data',
-        dev_data_path: str = './mmlu_test_1444.jsonl',
+        dev_data_path: str = './dataset/jnu/jnu_test_with_labels.json',
         output_dir: str = './lora-shepherd/',
         # FL hyperparamas
         client_selection_strategy: str = 'random',
         client_selection_frac: float = 0.1,
         num_communication_rounds: int = 10,
-        num_clients: int = 10,
+        num_clients: int = 100,
         # Local training hyperparams
         local_batch_size: int = 64,  # 64,
         local_micro_batch_size: int = 8,
@@ -55,7 +55,7 @@ def fl_finetune(
             "q_proj",
         ],
         # llm hyperparams
-        train_on_inputs: bool = True,
+        train_on_inputs: bool = False,
         group_by_length: bool = False,
         resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
         prompt_template_name: str = "alpaca",  # The prompt template to use, will default to alpaca.
@@ -176,13 +176,13 @@ def fl_finetune(
     def generate_and_tokenize_prompt(data_point):
         full_prompt = prompter.generate_prompt(
             data_point["instruction"],
-            data_point["context"],
-            data_point["response"],
+            data_point.get("context", data_point.get("input", "")),
+            data_point.get("response", data_point.get("output", "")),
         )
         tokenized_full_prompt = tokenize(full_prompt)
         if not train_on_inputs:
             user_prompt = prompter.generate_prompt(
-                data_point["instruction"], data_point["context"]
+                data_point["instruction"], data_point.get("context", data_point.get("input", ""))
             )
             tokenized_user_prompt = tokenize(user_prompt, add_eos_token=False)
             user_prompt_len = len(tokenized_user_prompt["input_ids"])
@@ -216,6 +216,7 @@ def fl_finetune(
     local_dataset_len_dict = dict()
     output_dir = os.path.join(output_dir, str(num_clients))
     result_dir = os.path.join("./resault", str(num_clients))
+    final_output_dir = os.path.join(output_dir, "final")
 
     acc_list = []
 
@@ -268,7 +269,11 @@ def fl_finetune(
 
 
     print(acc_list)
+    os.makedirs(final_output_dir, exist_ok=True)
+    torch.save(model.state_dict(), os.path.join(final_output_dir, "adapter_model.bin"))
+    config.save_pretrained(final_output_dir)
     print("Accuracy history and curve saved.")
+    print(f"Final global adapter saved to {final_output_dir}")
 
 
 if __name__ == "__main__":
