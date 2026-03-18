@@ -24,6 +24,8 @@ class GeneralClient:
             local_train_val = self.local_data["train"].train_test_split(
                 test_size=local_val_set_size, shuffle=True, seed=seed
             )
+            self.local_eval_records = list(local_train_val["test"])
+            self.local_eval_source = "held_out_local_split"
             self.local_train_dataset = (
                 local_train_val["train"].shuffle(seed=seed).map(generate_and_tokenize_prompt)
             )
@@ -31,6 +33,8 @@ class GeneralClient:
                 local_train_val["test"].shuffle(seed=seed).map(generate_and_tokenize_prompt)
             )
         else:
+            self.local_eval_records = list(self.local_data["train"])
+            self.local_eval_source = "local_training_full_set"
             self.local_train_dataset = self.local_data["train"].shuffle(seed=seed).map(generate_and_tokenize_prompt)
             self.local_eval_dataset = None
         self.local_val_set_size = local_val_set_size

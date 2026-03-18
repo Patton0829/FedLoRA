@@ -14,6 +14,7 @@ from peft import (
 from fed_utils import (
     FedAvg,
     client_selection,
+    evaluate_dataset_records,
     global_evaluation,
     save_acc_history,
     plot_acc_curve,
@@ -242,12 +243,14 @@ def fl_finetune(
     final_output_dir = os.path.join(output_dir, "final")
 
     acc_list = []
+    round_records = []
 
     for epoch in tqdm(range(num_communication_rounds)):
 
         print("\nConducting the client selection")
         selected_clients_set = client_selection(num_clients, client_selection_frac, client_selection_strategy,
                                                 other_info=epoch)
+        local_client_metrics = []
 
         for client_id in selected_clients_set:
             client = GeneralClient(client_id, model, data_path, output_dir)
@@ -269,6 +272,23 @@ def fl_finetune(
             print("Local training starts ... ")
             client.train()
 
+            local_acc = evaluate_dataset_records(
+                client.model,
+                tokenizer,
+                prompter,
+                client.local_eval_records,
+                dataset_name=f"Client_{client_id} Local Evaluation",
+            )
+            local_client_metrics.append(
+                {
+                    "client_id": int(client_id),
+                    "eval_source": client.local_eval_source,
+                    "eval_file": client.local_data_path,
+                    "eval_samples": int(len(client.local_eval_records)),
+                    "local_accuracy": float(local_acc),
+                }
+            )
+
             print("\nTerminating the local training of Client_{}".format(client_id))
             model, local_dataset_len_dict, previously_selected_clients_set, last_client_id = client.terminate_local_training(
                 epoch, local_dataset_len_dict, previously_selected_clients_set)
@@ -288,7 +308,16 @@ def fl_finetune(
         acc = global_evaluation(model, tokenizer, prompter, dev_data_path)
         print('Acc of Epoch', str(epoch), 'is:', acc)
         acc_list.append(acc)
-        save_acc_history(acc_list, result_dir)
+        round_records.append(
+            {
+                "round": int(epoch + 1),
+                "selected_clients": sorted(int(client_id) for client_id in selected_clients_set),
+                "local_client_metrics": local_client_metrics,
+                "global_eval_file": dev_data_path,
+                "accuracy": float(acc),
+            }
+        )
+        save_acc_history(acc_list, result_dir, round_records=round_records)
         plot_acc_curve(acc_list, result_dir)
 
 

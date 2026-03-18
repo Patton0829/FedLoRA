@@ -51,12 +51,15 @@ def normalize_label(text):
     return normalized
 
 
-def save_acc_history(acc_list, save_dir, filename="acc_history.json"):
+def save_acc_history(acc_list, save_dir, filename="acc_history.json", round_records=None):
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, filename)
-    history = []
-    for round_idx, acc in enumerate(acc_list, start=1):
-        history.append({"round": round_idx, "acc": float(acc)})
+    if round_records is not None:
+        history = round_records
+    else:
+        history = []
+        for round_idx, acc in enumerate(acc_list, start=1):
+            history.append({"round": round_idx, "accuracy": float(acc)})
 
     with open(save_path, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
@@ -83,10 +86,7 @@ def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png"):
     return save_path
 
 
-def global_evaluation(model, tokenizer, prompter, dev_data_path):
-    with open(dev_data_path, "r", encoding="utf-8") as f:
-        test_set = json.load(f)
-
+def evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name=None):
     label_set = sorted(
         {
             normalize_label(data_point.get("output", data_point.get("response", "")))
@@ -176,9 +176,18 @@ def global_evaluation(model, tokenizer, prompter, dev_data_path):
 
     if verbose:
         print(right_count_dict)
+    if dataset_name:
+        print(f"========== {dataset_name} ==========")
     print("Acc: ", acc_count_dict)
     print()
     print("========== Accuracy ==========")
     print(mean_acc)
 
     return mean_acc
+
+
+def global_evaluation(model, tokenizer, prompter, dev_data_path):
+    with open(dev_data_path, "r", encoding="utf-8") as f:
+        test_set = json.load(f)
+
+    return evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name="Global Evaluation")
