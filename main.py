@@ -17,7 +17,10 @@ from fed_utils import (
     evaluate_dataset_records,
     global_evaluation,
     save_acc_history,
+    save_confusion_matrix,
+    save_prediction_samples,
     plot_acc_curve,
+    plot_confusion_matrix_heatmap,
     GeneralClient,
 )
 import datasets
@@ -52,11 +55,11 @@ def fl_finetune(
         # model/data params
         global_model: str = '',
         data_path: str = './data',
-        dev_data_path: str = './dataset/jnu/jnu_test_with_labels.json',
+        dev_data_path: str = './dataset/jnu/jnu_test_with_labels_100.json',
         output_dir: str = './lora-shepherd/',
         # FL hyperparamas
         client_selection_strategy: str = 'random',
-        client_selection_frac: float = 0.1,
+        client_selection_frac: float = 0.3,
         num_communication_rounds: int = 10,
         num_clients: int = 100,
         # Local training hyperparams
@@ -305,7 +308,29 @@ def fl_finetune(
         config.save_pretrained(output_dir)
 
         # Please design the evaluation method based on your specific requirements in the fed_utils/evaluation.py file.
-        acc = global_evaluation(model, tokenizer, prompter, dev_data_path)
+        global_eval_result = global_evaluation(
+            model,
+            tokenizer,
+            prompter,
+            dev_data_path,
+            return_details=True,
+            sample_size=5,
+            mistake_sample_size=20,
+        )
+        acc = global_eval_result["accuracy"]
+        sample_filename = f"round_{epoch + 1}_global_prediction_samples.json"
+        mistakes_filename = f"round_{epoch + 1}_global_mistakes.json"
+        confusion_filename = f"round_{epoch + 1}_global_confusion_matrix.json"
+        confusion_png_filename = f"round_{epoch + 1}_global_confusion_matrix.png"
+        save_prediction_samples(global_eval_result["prediction_samples"], result_dir, sample_filename)
+        save_prediction_samples(global_eval_result["mistake_samples"], result_dir, mistakes_filename)
+        save_confusion_matrix(global_eval_result["confusion_matrix"], result_dir, confusion_filename)
+        plot_confusion_matrix_heatmap(
+            global_eval_result["confusion_matrix"],
+            result_dir,
+            filename=confusion_png_filename,
+            title=f"Round {epoch + 1} Global Confusion Matrix",
+        )
         print('Acc of Epoch', str(epoch), 'is:', acc)
         acc_list.append(acc)
         round_records.append(
@@ -314,6 +339,11 @@ def fl_finetune(
                 "selected_clients": sorted(int(client_id) for client_id in selected_clients_set),
                 "local_client_metrics": local_client_metrics,
                 "global_eval_file": dev_data_path,
+                "global_prediction_samples_file": os.path.join(result_dir, sample_filename),
+                "global_mistakes_file": os.path.join(result_dir, mistakes_filename),
+                "global_confusion_matrix_file": os.path.join(result_dir, confusion_filename),
+                "global_confusion_matrix_png_file": os.path.join(result_dir, confusion_png_filename),
+                "global_per_label_accuracy": global_eval_result["per_label_accuracy"],
                 "accuracy": float(acc),
             }
         )

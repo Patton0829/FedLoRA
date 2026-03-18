@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+SMALL_TEST_SIZE = 100
+
 
 def extract_label(label_item: dict) -> str:
     if "output" in label_item:
@@ -15,6 +17,7 @@ def main() -> None:
     test_path = current_dir / "jnu_test.json"
     labels_path = current_dir / "jnu_labels.json"
     output_path = current_dir / "jnu_test_with_labels.json"
+    small_output_path = current_dir / "jnu_test_with_labels_100.json"
 
     with test_path.open("r", encoding="utf-8") as f:
         test_data = json.load(f)
@@ -34,10 +37,21 @@ def main() -> None:
         merged_sample["output"] = extract_label(label_item)
         merged_data.append(merged_sample)
 
+    if len(merged_data) < SMALL_TEST_SIZE:
+        raise ValueError(
+            f"Expected at least {SMALL_TEST_SIZE} test samples, but only found {len(merged_data)}."
+        )
+
+    small_merged_data = merged_data[:SMALL_TEST_SIZE]
+
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(merged_data, f, ensure_ascii=False, indent=2)
 
+    with small_output_path.open("w", encoding="utf-8") as f:
+        json.dump(small_merged_data, f, ensure_ascii=False, indent=2)
+
     print(f"Saved {len(merged_data)} labeled test samples to {output_path.name}")
+    print(f"Saved {len(small_merged_data)} labeled test samples to {small_output_path.name}")
 
 
 if __name__ == "__main__":

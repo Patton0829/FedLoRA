@@ -1,0 +1,502 @@
+[
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0006, Standard Deviation = 0.0665, Square Root Amplitude = 0.0443, Absolute Mean Value = 0.0531, Peak Value = 0.1837, Skewness = 0.3909, Kurtosis = 2.6187, Variance = 0.0044, Kurtosis Index = 17.1398, Peak Index = 2.7627, Waveform Index = 1.2520, Pulse Index = 3.4590. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0204, Standard Deviation = 0.0789, Square Root Amplitude = 0.0553, Absolute Mean Value = 0.0652, Peak Value = 0.2658, Skewness = -0.1072, Kurtosis = 2.7532, Variance = 0.0062, Kurtosis Index = 239.7321, Peak Index = 3.3670, Waveform Index = 1.2098, Pulse Index = 4.0734. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0408, Standard Deviation = 0.0856, Square Root Amplitude = 0.0673, Absolute Mean Value = 0.0780, Peak Value = 0.2440, Skewness = 0.1677, Kurtosis = 2.5196, Variance = 0.0073, Kurtosis Index = 89.6272, Peak Index = 2.8515, Waveform Index = 1.0976, Pulse Index = 3.1298. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0341, Standard Deviation = 0.0922, Square Root Amplitude = 0.0686, Absolute Mean Value = 0.0799, Peak Value = 0.2552, Skewness = 0.1688, Kurtosis = 2.7814, Variance = 0.0085, Kurtosis Index = 97.6432, Peak Index = 2.7676, Waveform Index = 1.1538, Pulse Index = 3.1932. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0107, Standard Deviation = 0.0809, Square Root Amplitude = 0.0567, Absolute Mean Value = 0.0661, Peak Value = 0.2155, Skewness = 0.2556, Kurtosis = 2.8251, Variance = 0.0065, Kurtosis Index = 43.2280, Peak Index = 2.6652, Waveform Index = 1.2236, Pulse Index = 3.2611. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0233, Standard Deviation = 0.6279, Square Root Amplitude = 0.1540, Absolute Mean Value = 0.2485, Peak Value = 5.9981, Skewness = -0.8146, Kurtosis = 53.3149, Variance = 0.3943, Kurtosis Index = 80.3451, Peak Index = 9.5520, Waveform Index = 2.5269, Pulse Index = 24.1370. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0127, Standard Deviation = 0.0789, Square Root Amplitude = 0.0529, Absolute Mean Value = 0.0625, Peak Value = 0.3061, Skewness = 0.2827, Kurtosis = 3.7746, Variance = 0.0062, Kurtosis Index = 47.2247, Peak Index = 3.8803, Waveform Index = 1.2616, Pulse Index = 4.8954. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0959, Standard Deviation = 0.1658, Square Root Amplitude = 0.1154, Absolute Mean Value = 0.1396, Peak Value = 1.0665, Skewness = 0.4743, Kurtosis = 11.0621, Variance = 0.0275, Kurtosis Index = 49.1647, Peak Index = 6.4334, Waveform Index = 1.1873, Pulse Index = 7.6387. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0063, Standard Deviation = 0.0786, Square Root Amplitude = 0.0533, Absolute Mean Value = 0.0629, Peak Value = 0.2273, Skewness = -0.1401, Kurtosis = 2.8890, Variance = 0.0062, Kurtosis Index = 147.1011, Peak Index = 2.8930, Waveform Index = 1.2484, Pulse Index = 3.6116. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0094, Standard Deviation = 0.1262, Square Root Amplitude = 0.0801, Absolute Mean Value = 0.0960, Peak Value = 0.6027, Skewness = -0.1007, Kurtosis = 5.1552, Variance = 0.0159, Kurtosis Index = 508.5834, Peak Index = 4.7741, Waveform Index = 1.3146, Pulse Index = 6.2762. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0162, Standard Deviation = 0.1145, Square Root Amplitude = 0.0794, Absolute Mean Value = 0.0931, Peak Value = 0.4895, Skewness = -0.3370, Kurtosis = 3.6730, Variance = 0.0131, Kurtosis Index = 32.3323, Peak Index = 4.2737, Waveform Index = 1.2302, Pulse Index = 5.2575. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0254, Standard Deviation = 0.0857, Square Root Amplitude = 0.0689, Absolute Mean Value = 0.0765, Peak Value = 0.2567, Skewness = -0.1193, Kurtosis = 2.3032, Variance = 0.0073, Kurtosis Index = 161.7643, Peak Index = 2.9957, Waveform Index = 1.1200, Pulse Index = 3.3553. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0601, Standard Deviation = 0.0972, Square Root Amplitude = 0.0850, Absolute Mean Value = 0.0964, Peak Value = 0.2475, Skewness = -0.5652, Kurtosis = 3.1210, Variance = 0.0094, Kurtosis Index = 9.7685, Peak Index = 2.5474, Waveform Index = 1.0078, Pulse Index = 2.5672. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0345, Standard Deviation = 0.0608, Square Root Amplitude = 0.0521, Absolute Mean Value = 0.0591, Peak Value = 0.1794, Skewness = 0.2492, Kurtosis = 2.3456, Variance = 0.0037, Kurtosis Index = 37.7798, Peak Index = 2.9493, Waveform Index = 1.0286, Pulse Index = 3.0337. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0147, Standard Deviation = 0.0967, Square Root Amplitude = 0.0682, Absolute Mean Value = 0.0795, Peak Value = 0.2505, Skewness = 0.0570, Kurtosis = 2.5539, Variance = 0.0093, Kurtosis Index = 785.3004, Peak Index = 2.5916, Waveform Index = 1.2158, Pulse Index = 3.1508. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0090, Standard Deviation = 0.4337, Square Root Amplitude = 0.1277, Absolute Mean Value = 0.2011, Peak Value = 2.9919, Skewness = 1.8755, Kurtosis = 21.9885, Variance = 0.1881, Kurtosis Index = 6.2509, Peak Index = 6.8985, Waveform Index = 2.1567, Pulse Index = 14.8782. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0287, Standard Deviation = 0.0593, Square Root Amplitude = 0.0461, Absolute Mean Value = 0.0537, Peak Value = 0.1783, Skewness = 0.0066, Kurtosis = 2.3913, Variance = 0.0035, Kurtosis Index = 55143.6819, Peak Index = 3.0072, Waveform Index = 1.1045, Pulse Index = 3.3216. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0100, Standard Deviation = 0.0999, Square Root Amplitude = 0.0624, Absolute Mean Value = 0.0758, Peak Value = 0.3787, Skewness = -0.2178, Kurtosis = 4.0552, Variance = 0.0100, Kurtosis Index = 85.4943, Peak Index = 3.7898, Waveform Index = 1.3193, Pulse Index = 4.9999. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0292, Standard Deviation = 0.5188, Square Root Amplitude = 0.1630, Absolute Mean Value = 0.2561, Peak Value = 4.3969, Skewness = 2.0157, Kurtosis = 27.0741, Variance = 0.2691, Kurtosis Index = 6.6633, Peak Index = 8.4753, Waveform Index = 2.0254, Pulse Index = 17.1662. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0413, Standard Deviation = 0.3836, Square Root Amplitude = 0.1453, Absolute Mean Value = 0.2004, Peak Value = 3.3727, Skewness = 1.1041, Kurtosis = 35.0127, Variance = 0.1471, Kurtosis Index = 28.7221, Peak Index = 8.7931, Waveform Index = 1.9142, Pulse Index = 16.8318. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0128, Standard Deviation = 0.2245, Square Root Amplitude = 0.1241, Absolute Mean Value = 0.1566, Peak Value = 0.9632, Skewness = -0.1391, Kurtosis = 6.0628, Variance = 0.0504, Kurtosis Index = 313.3631, Peak Index = 4.2903, Waveform Index = 1.4336, Pulse Index = 6.1504. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0313, Standard Deviation = 0.0805, Square Root Amplitude = 0.0603, Absolute Mean Value = 0.0702, Peak Value = 0.2146, Skewness = 0.2435, Kurtosis = 1.9739, Variance = 0.0065, Kurtosis Index = 33.2899, Peak Index = 2.6662, Waveform Index = 1.1472, Pulse Index = 3.0587. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0062, Standard Deviation = 0.0766, Square Root Amplitude = 0.0525, Absolute Mean Value = 0.0618, Peak Value = 0.1978, Skewness = 0.1752, Kurtosis = 2.6481, Variance = 0.0059, Kurtosis Index = 86.2220, Peak Index = 2.5820, Waveform Index = 1.2400, Pulse Index = 3.2016. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0403, Standard Deviation = 0.5522, Square Root Amplitude = 0.0896, Absolute Mean Value = 0.1638, Peak Value = 4.8469, Skewness = 2.9249, Kurtosis = 53.1922, Variance = 0.3050, Kurtosis Index = 6.2179, Peak Index = 8.7770, Waveform Index = 3.3713, Pulse Index = 29.5898. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0210, Standard Deviation = 0.0816, Square Root Amplitude = 0.0601, Absolute Mean Value = 0.0693, Peak Value = 0.2106, Skewness = -0.1042, Kurtosis = 2.4493, Variance = 0.0067, Kurtosis Index = 225.4599, Peak Index = 2.5820, Waveform Index = 1.1763, Pulse Index = 3.0373. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0335, Standard Deviation = 0.5822, Square Root Amplitude = 0.1501, Absolute Mean Value = 0.2637, Peak Value = 2.5082, Skewness = 0.3477, Kurtosis = 12.7680, Variance = 0.3390, Kurtosis Index = 105.6302, Peak Index = 4.3082, Waveform Index = 2.2075, Pulse Index = 9.5103. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0510, Standard Deviation = 0.0705, Square Root Amplitude = 0.0615, Absolute Mean Value = 0.0713, Peak Value = 0.2373, Skewness = 0.4331, Kurtosis = 3.5587, Variance = 0.0050, Kurtosis Index = 18.9679, Peak Index = 3.3653, Waveform Index = 0.9884, Pulse Index = 3.3262. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0162, Standard Deviation = 0.6002, Square Root Amplitude = 0.1146, Absolute Mean Value = 0.2064, Peak Value = 5.9281, Skewness = -2.0588, Kurtosis = 51.0536, Variance = 0.3602, Kurtosis Index = 12.0442, Peak Index = 9.8771, Waveform Index = 2.9083, Pulse Index = 28.7251. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0010, Standard Deviation = 0.0928, Square Root Amplitude = 0.0636, Absolute Mean Value = 0.0749, Peak Value = 0.2767, Skewness = -0.1032, Kurtosis = 2.6854, Variance = 0.0086, Kurtosis Index = 252.0679, Peak Index = 2.9829, Waveform Index = 1.2385, Pulse Index = 3.6943. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0091, Standard Deviation = 0.0898, Square Root Amplitude = 0.0579, Absolute Mean Value = 0.0699, Peak Value = 0.2582, Skewness = 0.1871, Kurtosis = 3.1597, Variance = 0.0081, Kurtosis Index = 90.2460, Peak Index = 2.8759, Waveform Index = 1.2851, Pulse Index = 3.6960. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0268, Standard Deviation = 0.0759, Square Root Amplitude = 0.0599, Absolute Mean Value = 0.0681, Peak Value = 0.2250, Skewness = -0.3323, Kurtosis = 2.4833, Variance = 0.0058, Kurtosis Index = 22.4924, Peak Index = 2.9647, Waveform Index = 1.1143, Pulse Index = 3.3035. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0231, Standard Deviation = 0.0617, Square Root Amplitude = 0.0459, Absolute Mean Value = 0.0536, Peak Value = 0.1900, Skewness = 0.3616, Kurtosis = 3.0428, Variance = 0.0038, Kurtosis Index = 23.2658, Peak Index = 3.0776, Waveform Index = 1.1521, Pulse Index = 3.5457. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0088, Standard Deviation = 0.0777, Square Root Amplitude = 0.0576, Absolute Mean Value = 0.0656, Peak Value = 0.1913, Skewness = -0.1332, Kurtosis = 2.2376, Variance = 0.0060, Kurtosis Index = 126.1417, Peak Index = 2.4613, Waveform Index = 1.1838, Pulse Index = 2.9135. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0010, Standard Deviation = 0.3077, Square Root Amplitude = 0.2119, Absolute Mean Value = 0.2490, Peak Value = 0.6567, Skewness = 0.1683, Kurtosis = 2.3505, Variance = 0.0947, Kurtosis Index = 83.0147, Peak Index = 2.1344, Waveform Index = 1.2358, Pulse Index = 2.6376. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0151, Standard Deviation = 0.0688, Square Root Amplitude = 0.0493, Absolute Mean Value = 0.0571, Peak Value = 0.1953, Skewness = -0.0327, Kurtosis = 2.6640, Variance = 0.0047, Kurtosis Index = 2485.2230, Peak Index = 2.8360, Waveform Index = 1.2055, Pulse Index = 3.4188. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0299, Standard Deviation = 0.0781, Square Root Amplitude = 0.0560, Absolute Mean Value = 0.0661, Peak Value = 0.2410, Skewness = 0.2414, Kurtosis = 3.3668, Variance = 0.0061, Kurtosis Index = 57.7532, Peak Index = 3.0854, Waveform Index = 1.1820, Pulse Index = 3.6470. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0088, Standard Deviation = 0.0780, Square Root Amplitude = 0.0540, Absolute Mean Value = 0.0629, Peak Value = 0.2623, Skewness = -0.0874, Kurtosis = 3.0369, Variance = 0.0061, Kurtosis Index = 397.7132, Peak Index = 3.3608, Waveform Index = 1.2408, Pulse Index = 4.1700. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0358, Standard Deviation = 0.0865, Square Root Amplitude = 0.0647, Absolute Mean Value = 0.0758, Peak Value = 0.2398, Skewness = 0.2974, Kurtosis = 3.0085, Variance = 0.0075, Kurtosis Index = 34.0223, Peak Index = 2.7711, Waveform Index = 1.1413, Pulse Index = 3.1626. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0405, Standard Deviation = 0.0923, Square Root Amplitude = 0.0693, Absolute Mean Value = 0.0815, Peak Value = 0.3159, Skewness = 0.0420, Kurtosis = 2.7911, Variance = 0.0085, Kurtosis Index = 1581.9719, Peak Index = 3.4223, Waveform Index = 1.1332, Pulse Index = 3.8783. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0033, Standard Deviation = 0.0773, Square Root Amplitude = 0.0549, Absolute Mean Value = 0.0633, Peak Value = 0.3060, Skewness = 0.1025, Kurtosis = 3.2358, Variance = 0.0060, Kurtosis Index = 307.8862, Peak Index = 3.9596, Waveform Index = 1.2201, Pulse Index = 4.8313. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0152, Standard Deviation = 0.1104, Square Root Amplitude = 0.0744, Absolute Mean Value = 0.0881, Peak Value = 0.3415, Skewness = 0.3684, Kurtosis = 2.8676, Variance = 0.0122, Kurtosis Index = 21.1268, Peak Index = 3.0922, Waveform Index = 1.2540, Pulse Index = 3.8775. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0303, Standard Deviation = 0.0655, Square Root Amplitude = 0.0552, Absolute Mean Value = 0.0617, Peak Value = 0.1790, Skewness = -0.5821, Kurtosis = 2.9480, Variance = 0.0043, Kurtosis Index = 8.6992, Peak Index = 2.7317, Waveform Index = 1.0625, Pulse Index = 2.9024. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0326, Standard Deviation = 0.0735, Square Root Amplitude = 0.0567, Absolute Mean Value = 0.0656, Peak Value = 0.1931, Skewness = 0.2601, Kurtosis = 2.8038, Variance = 0.0054, Kurtosis Index = 41.4592, Peak Index = 2.6289, Waveform Index = 1.1191, Pulse Index = 2.9422. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0036, Standard Deviation = 0.0574, Square Root Amplitude = 0.0379, Absolute Mean Value = 0.0450, Peak Value = 0.1737, Skewness = 0.7132, Kurtosis = 3.5041, Variance = 0.0033, Kurtosis Index = 6.8899, Peak Index = 3.0291, Waveform Index = 1.2746, Pulse Index = 3.8610. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0162, Standard Deviation = 0.1183, Square Root Amplitude = 0.0850, Absolute Mean Value = 0.0976, Peak Value = 0.3972, Skewness = 0.2777, Kurtosis = 3.1188, Variance = 0.0140, Kurtosis Index = 40.4498, Peak Index = 3.3582, Waveform Index = 1.2126, Pulse Index = 4.0720. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0139, Standard Deviation = 0.0908, Square Root Amplitude = 0.0639, Absolute Mean Value = 0.0746, Peak Value = 0.3031, Skewness = -0.0983, Kurtosis = 2.7810, Variance = 0.0082, Kurtosis Index = 288.0068, Peak Index = 3.3394, Waveform Index = 1.2163, Pulse Index = 4.0617. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0081, Standard Deviation = 0.0840, Square Root Amplitude = 0.0605, Absolute Mean Value = 0.0696, Peak Value = 0.2455, Skewness = 0.2827, Kurtosis = 2.6176, Variance = 0.0070, Kurtosis Index = 32.7616, Peak Index = 2.9239, Waveform Index = 1.2063, Pulse Index = 3.5271. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0175, Standard Deviation = 0.0664, Square Root Amplitude = 0.0468, Absolute Mean Value = 0.0547, Peak Value = 0.2493, Skewness = -0.1800, Kurtosis = 3.0734, Variance = 0.0044, Kurtosis Index = 94.8861, Peak Index = 3.7556, Waveform Index = 1.2129, Pulse Index = 4.5553. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0130, Standard Deviation = 0.0825, Square Root Amplitude = 0.0562, Absolute Mean Value = 0.0663, Peak Value = 0.2537, Skewness = 0.1084, Kurtosis = 2.9905, Variance = 0.0068, Kurtosis Index = 254.2748, Peak Index = 3.0769, Waveform Index = 1.2439, Pulse Index = 3.8274. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0116, Standard Deviation = 0.1004, Square Root Amplitude = 0.0720, Absolute Mean Value = 0.0833, Peak Value = 0.2717, Skewness = -0.1486, Kurtosis = 2.5351, Variance = 0.0101, Kurtosis Index = 114.8825, Peak Index = 2.7053, Waveform Index = 1.2056, Pulse Index = 3.2616. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0050, Standard Deviation = 0.1508, Square Root Amplitude = 0.0853, Absolute Mean Value = 0.1065, Peak Value = 0.6391, Skewness = 0.3282, Kurtosis = 6.3654, Variance = 0.0227, Kurtosis Index = 59.1035, Peak Index = 4.2389, Waveform Index = 1.4158, Pulse Index = 6.0013. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0002, Standard Deviation = 0.1278, Square Root Amplitude = 0.0847, Absolute Mean Value = 0.1011, Peak Value = 0.3773, Skewness = 0.4718, Kurtosis = 2.9646, Variance = 0.0163, Kurtosis Index = 13.3178, Peak Index = 2.9521, Waveform Index = 1.2647, Pulse Index = 3.7335. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0036, Standard Deviation = 0.0860, Square Root Amplitude = 0.0587, Absolute Mean Value = 0.0690, Peak Value = 0.2625, Skewness = 0.2170, Kurtosis = 2.8270, Variance = 0.0074, Kurtosis Index = 60.0244, Peak Index = 3.0511, Waveform Index = 1.2467, Pulse Index = 3.8039. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0330, Standard Deviation = 0.0708, Square Root Amplitude = 0.0508, Absolute Mean Value = 0.0610, Peak Value = 0.2723, Skewness = 0.4073, Kurtosis = 4.3665, Variance = 0.0050, Kurtosis Index = 26.3189, Peak Index = 3.8476, Waveform Index = 1.1595, Pulse Index = 4.4614. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0297, Standard Deviation = 0.0647, Square Root Amplitude = 0.0478, Absolute Mean Value = 0.0561, Peak Value = 0.2740, Skewness = -0.2409, Kurtosis = 5.2015, Variance = 0.0042, Kurtosis Index = 89.6407, Peak Index = 4.2371, Waveform Index = 1.1535, Pulse Index = 4.8875. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0295, Standard Deviation = 0.0876, Square Root Amplitude = 0.0629, Absolute Mean Value = 0.0748, Peak Value = 0.2338, Skewness = 0.2419, Kurtosis = 2.5108, Variance = 0.0077, Kurtosis Index = 42.9244, Peak Index = 2.6694, Waveform Index = 1.1713, Pulse Index = 3.1267. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0139, Standard Deviation = 0.0867, Square Root Amplitude = 0.0644, Absolute Mean Value = 0.0734, Peak Value = 0.2246, Skewness = 0.2037, Kurtosis = 2.1416, Variance = 0.0075, Kurtosis Index = 51.5943, Peak Index = 2.5904, Waveform Index = 1.1815, Pulse Index = 3.0605. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0075, Standard Deviation = 0.1147, Square Root Amplitude = 0.0769, Absolute Mean Value = 0.0910, Peak Value = 0.4798, Skewness = 0.0637, Kurtosis = 3.7897, Variance = 0.0132, Kurtosis Index = 932.8466, Peak Index = 4.1823, Waveform Index = 1.2613, Pulse Index = 5.2752. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0581, Standard Deviation = 0.0748, Square Root Amplitude = 0.0669, Absolute Mean Value = 0.0776, Peak Value = 0.2580, Skewness = 0.0051, Kurtosis = 2.5550, Variance = 0.0056, Kurtosis Index = 99558.6801, Peak Index = 3.4513, Waveform Index = 0.9635, Pulse Index = 3.3254. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0091, Standard Deviation = 0.0773, Square Root Amplitude = 0.0500, Absolute Mean Value = 0.0601, Peak Value = 0.2667, Skewness = -0.3154, Kurtosis = 3.3137, Variance = 0.0060, Kurtosis Index = 33.3148, Peak Index = 3.4512, Waveform Index = 1.2862, Pulse Index = 4.4390. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0231, Standard Deviation = 0.1090, Square Root Amplitude = 0.0790, Absolute Mean Value = 0.0920, Peak Value = 0.2826, Skewness = -0.1382, Kurtosis = 2.3772, Variance = 0.0119, Kurtosis Index = 124.4740, Peak Index = 2.5932, Waveform Index = 1.1849, Pulse Index = 3.0727. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0112, Standard Deviation = 0.0762, Square Root Amplitude = 0.0503, Absolute Mean Value = 0.0603, Peak Value = 0.2056, Skewness = 0.1727, Kurtosis = 2.7486, Variance = 0.0058, Kurtosis Index = 92.1403, Peak Index = 2.6993, Waveform Index = 1.2633, Pulse Index = 3.4101. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0236, Standard Deviation = 0.0882, Square Root Amplitude = 0.0620, Absolute Mean Value = 0.0729, Peak Value = 0.3348, Skewness = -0.2544, Kurtosis = 2.9784, Variance = 0.0078, Kurtosis Index = 46.0235, Peak Index = 3.7963, Waveform Index = 1.2100, Pulse Index = 4.5934. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0137, Standard Deviation = 0.1122, Square Root Amplitude = 0.0734, Absolute Mean Value = 0.0877, Peak Value = 0.3770, Skewness = -0.1340, Kurtosis = 3.4366, Variance = 0.0126, Kurtosis Index = 191.2737, Peak Index = 3.3601, Waveform Index = 1.2798, Pulse Index = 4.3003. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0169, Standard Deviation = 0.0630, Square Root Amplitude = 0.0475, Absolute Mean Value = 0.0541, Peak Value = 0.1754, Skewness = 0.0671, Kurtosis = 2.3833, Variance = 0.0040, Kurtosis Index = 529.0199, Peak Index = 2.7864, Waveform Index = 1.1629, Pulse Index = 3.2404. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0363, Standard Deviation = 0.0833, Square Root Amplitude = 0.0653, Absolute Mean Value = 0.0746, Peak Value = 0.2755, Skewness = 0.0793, Kurtosis = 2.6395, Variance = 0.0069, Kurtosis Index = 419.8806, Peak Index = 3.3081, Waveform Index = 1.1157, Pulse Index = 3.6909. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0103, Standard Deviation = 0.1777, Square Root Amplitude = 0.1276, Absolute Mean Value = 0.1479, Peak Value = 0.3950, Skewness = -0.1445, Kurtosis = 2.1475, Variance = 0.0316, Kurtosis Index = 102.8020, Peak Index = 2.2228, Waveform Index = 1.2015, Pulse Index = 2.6707. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0187, Standard Deviation = 0.1123, Square Root Amplitude = 0.0664, Absolute Mean Value = 0.0823, Peak Value = 0.4790, Skewness = 0.5831, Kurtosis = 5.4462, Variance = 0.0126, Kurtosis Index = 16.0161, Peak Index = 4.2635, Waveform Index = 1.3654, Pulse Index = 5.8215. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0137, Standard Deviation = 0.0831, Square Root Amplitude = 0.0573, Absolute Mean Value = 0.0675, Peak Value = 0.2390, Skewness = -0.3344, Kurtosis = 3.0111, Variance = 0.0069, Kurtosis Index = 26.9247, Peak Index = 2.8742, Waveform Index = 1.2325, Pulse Index = 3.5425. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0005, Standard Deviation = 0.0728, Square Root Amplitude = 0.0495, Absolute Mean Value = 0.0583, Peak Value = 0.2023, Skewness = 0.2170, Kurtosis = 2.6711, Variance = 0.0053, Kurtosis Index = 56.7344, Peak Index = 2.7789, Waveform Index = 1.2482, Pulse Index = 3.4687. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0543, Standard Deviation = 0.0732, Square Root Amplitude = 0.0642, Absolute Mean Value = 0.0745, Peak Value = 0.2642, Skewness = -0.4723, Kurtosis = 4.0502, Variance = 0.0054, Kurtosis Index = 18.1543, Peak Index = 3.6076, Waveform Index = 0.9824, Pulse Index = 3.5442. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0017, Standard Deviation = 0.0960, Square Root Amplitude = 0.0674, Absolute Mean Value = 0.0780, Peak Value = 0.2801, Skewness = -0.1214, Kurtosis = 2.8444, Variance = 0.0092, Kurtosis Index = 193.1067, Peak Index = 2.9188, Waveform Index = 1.2306, Pulse Index = 3.5919. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0388, Standard Deviation = 0.1200, Square Root Amplitude = 0.0811, Absolute Mean Value = 0.0960, Peak Value = 0.7692, Skewness = 0.6313, Kurtosis = 7.9913, Variance = 0.0144, Kurtosis Index = 20.0517, Peak Index = 6.4103, Waveform Index = 1.2502, Pulse Index = 8.0143. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0195, Standard Deviation = 0.1004, Square Root Amplitude = 0.0667, Absolute Mean Value = 0.0800, Peak Value = 0.2888, Skewness = 0.2921, Kurtosis = 2.8979, Variance = 0.0101, Kurtosis Index = 33.9534, Peak Index = 2.8758, Waveform Index = 1.2549, Pulse Index = 3.6089. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0052, Standard Deviation = 0.1142, Square Root Amplitude = 0.0672, Absolute Mean Value = 0.0839, Peak Value = 0.4033, Skewness = -0.0240, Kurtosis = 4.1317, Variance = 0.0131, Kurtosis Index = 7157.0413, Peak Index = 3.5306, Waveform Index = 1.3612, Pulse Index = 4.8059. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0188, Standard Deviation = 0.0944, Square Root Amplitude = 0.0673, Absolute Mean Value = 0.0782, Peak Value = 0.2929, Skewness = 0.2900, Kurtosis = 2.7535, Variance = 0.0089, Kurtosis Index = 32.7503, Peak Index = 3.1026, Waveform Index = 1.2078, Pulse Index = 3.7474. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0339, Standard Deviation = 0.0811, Square Root Amplitude = 0.0584, Absolute Mean Value = 0.0697, Peak Value = 0.2933, Skewness = 0.2494, Kurtosis = 2.6550, Variance = 0.0066, Kurtosis Index = 42.6778, Peak Index = 3.6159, Waveform Index = 1.1642, Pulse Index = 4.2097. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0336, Standard Deviation = 0.0870, Square Root Amplitude = 0.0634, Absolute Mean Value = 0.0744, Peak Value = 0.2740, Skewness = -0.0485, Kurtosis = 2.9843, Variance = 0.0076, Kurtosis Index = 1270.2146, Peak Index = 3.1473, Waveform Index = 1.1699, Pulse Index = 3.6821. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0099, Standard Deviation = 0.0850, Square Root Amplitude = 0.0588, Absolute Mean Value = 0.0690, Peak Value = 0.2435, Skewness = 0.0664, Kurtosis = 2.7443, Variance = 0.0072, Kurtosis Index = 621.6209, Peak Index = 2.8641, Waveform Index = 1.2320, Pulse Index = 3.5285. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0236, Standard Deviation = 0.1012, Square Root Amplitude = 0.0731, Absolute Mean Value = 0.0848, Peak Value = 0.3225, Skewness = 0.0861, Kurtosis = 2.6195, Variance = 0.0102, Kurtosis Index = 353.3924, Peak Index = 3.1879, Waveform Index = 1.1924, Pulse Index = 3.8013. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0309, Standard Deviation = 0.0836, Square Root Amplitude = 0.0578, Absolute Mean Value = 0.0695, Peak Value = 0.2612, Skewness = 0.3737, Kurtosis = 2.7977, Variance = 0.0070, Kurtosis Index = 20.0352, Peak Index = 3.1238, Waveform Index = 1.2032, Pulse Index = 3.7586. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0321, Standard Deviation = 0.0888, Square Root Amplitude = 0.0662, Absolute Mean Value = 0.0768, Peak Value = 0.3077, Skewness = 0.1432, Kurtosis = 2.9453, Variance = 0.0079, Kurtosis Index = 143.5530, Peak Index = 3.4633, Waveform Index = 1.1570, Pulse Index = 4.0069. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0158, Standard Deviation = 0.1009, Square Root Amplitude = 0.0665, Absolute Mean Value = 0.0794, Peak Value = 0.3867, Skewness = -0.3423, Kurtosis = 3.8755, Variance = 0.0102, Kurtosis Index = 33.0707, Peak Index = 3.8340, Waveform Index = 1.2699, Pulse Index = 4.8688. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0001, Standard Deviation = 0.0886, Square Root Amplitude = 0.0627, Absolute Mean Value = 0.0723, Peak Value = 0.2295, Skewness = 0.1960, Kurtosis = 2.6312, Variance = 0.0078, Kurtosis Index = 68.4695, Peak Index = 2.5910, Waveform Index = 1.2249, Pulse Index = 3.1737. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0323, Standard Deviation = 0.1025, Square Root Amplitude = 0.0719, Absolute Mean Value = 0.0857, Peak Value = 0.3229, Skewness = -0.0041, Kurtosis = 2.9259, Variance = 0.0105, Kurtosis Index = 173383.2462, Peak Index = 3.1494, Waveform Index = 1.1961, Pulse Index = 3.7669. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0489, Standard Deviation = 0.0756, Square Root Amplitude = 0.0638, Absolute Mean Value = 0.0744, Peak Value = 0.2319, Skewness = 0.3009, Kurtosis = 2.8261, Variance = 0.0057, Kurtosis Index = 31.2139, Peak Index = 3.0654, Waveform Index = 1.0173, Pulse Index = 3.1184. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0148, Standard Deviation = 0.0905, Square Root Amplitude = 0.0668, Absolute Mean Value = 0.0761, Peak Value = 0.2645, Skewness = -0.0113, Kurtosis = 2.4766, Variance = 0.0082, Kurtosis Index = 19564.4029, Peak Index = 2.9229, Waveform Index = 1.1892, Pulse Index = 3.4760. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0007, Standard Deviation = 0.2425, Square Root Amplitude = 0.1209, Absolute Mean Value = 0.1562, Peak Value = 1.4542, Skewness = -0.0041, Kurtosis = 11.3619, Variance = 0.0588, Kurtosis Index = 668829.4013, Peak Index = 5.9977, Waveform Index = 1.5518, Pulse Index = 9.3075. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0003, Standard Deviation = 0.0930, Square Root Amplitude = 0.0601, Absolute Mean Value = 0.0728, Peak Value = 0.2560, Skewness = -0.3204, Kurtosis = 2.9775, Variance = 0.0086, Kurtosis Index = 29.0010, Peak Index = 2.7528, Waveform Index = 1.2783, Pulse Index = 3.5189. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0170, Standard Deviation = 0.0790, Square Root Amplitude = 0.0537, Absolute Mean Value = 0.0640, Peak Value = 0.2198, Skewness = -0.0088, Kurtosis = 2.7131, Variance = 0.0062, Kurtosis Index = 35154.3036, Peak Index = 2.7841, Waveform Index = 1.2330, Pulse Index = 3.4328. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0514, Standard Deviation = 0.0971, Square Root Amplitude = 0.0786, Absolute Mean Value = 0.0905, Peak Value = 0.2686, Skewness = -0.1667, Kurtosis = 2.5666, Variance = 0.0094, Kurtosis Index = 92.3296, Peak Index = 2.7659, Waveform Index = 1.0735, Pulse Index = 2.9692. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0397, Standard Deviation = 0.0674, Square Root Amplitude = 0.0541, Absolute Mean Value = 0.0638, Peak Value = 0.1981, Skewness = -0.0380, Kurtosis = 2.1789, Variance = 0.0045, Kurtosis Index = 1509.8620, Peak Index = 2.9405, Waveform Index = 1.0563, Pulse Index = 3.1062. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0372, Standard Deviation = 0.0913, Square Root Amplitude = 0.0710, Absolute Mean Value = 0.0819, Peak Value = 0.2572, Skewness = 0.5018, Kurtosis = 2.9011, Variance = 0.0083, Kurtosis Index = 11.5204, Peak Index = 2.8176, Waveform Index = 1.1148, Pulse Index = 3.1412. ",
+    "output": "normal"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0287, Standard Deviation = 0.1556, Square Root Amplitude = 0.0926, Absolute Mean Value = 0.1129, Peak Value = 0.8858, Skewness = 1.0869, Kurtosis = 9.2263, Variance = 0.0242, Kurtosis Index = 7.8106, Peak Index = 5.6920, Waveform Index = 1.3787, Pulse Index = 7.8476. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0142, Standard Deviation = 0.5001, Square Root Amplitude = 0.1514, Absolute Mean Value = 0.2262, Peak Value = 4.1167, Skewness = 0.4763, Kurtosis = 33.5332, Variance = 0.2501, Kurtosis Index = 147.7850, Peak Index = 8.2324, Waveform Index = 2.2110, Pulse Index = 18.2021. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0197, Standard Deviation = 0.1480, Square Root Amplitude = 0.1006, Absolute Mean Value = 0.1192, Peak Value = 0.5377, Skewness = -0.0417, Kurtosis = 2.9440, Variance = 0.0219, Kurtosis Index = 1690.0969, Peak Index = 3.6334, Waveform Index = 1.2412, Pulse Index = 4.5098. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = -0.0075, Standard Deviation = 0.5563, Square Root Amplitude = 0.1811, Absolute Mean Value = 0.2742, Peak Value = 3.5375, Skewness = 1.6069, Kurtosis = 18.3586, Variance = 0.3095, Kurtosis Index = 7.1102, Peak Index = 6.3585, Waveform Index = 2.0286, Pulse Index = 12.8990. ",
+    "output": "ball fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0006, Standard Deviation = 0.0816, Square Root Amplitude = 0.0572, Absolute Mean Value = 0.0660, Peak Value = 0.2660, Skewness = 0.0812, Kurtosis = 3.1734, Variance = 0.0067, Kurtosis Index = 481.3527, Peak Index = 3.2618, Waveform Index = 1.2349, Pulse Index = 4.0281. ",
+    "output": "outer race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0308, Standard Deviation = 0.1015, Square Root Amplitude = 0.0718, Absolute Mean Value = 0.0851, Peak Value = 0.3051, Skewness = -0.2699, Kurtosis = 2.9864, Variance = 0.0103, Kurtosis Index = 40.9928, Peak Index = 3.0056, Waveform Index = 1.1931, Pulse Index = 3.5859. ",
+    "output": "inner race fault"
+  },
+  {
+    "instruction": "You are a bearing fault diagnosis expert. Based on the following features, you need to conduct fault diagnosis:",
+    "input": "Time-domain features: Mean Value = 0.0089, Standard Deviation = 0.0684, Square Root Amplitude = 0.0485, Absolute Mean Value = 0.0563, Peak Value = 0.2204, Skewness = -0.1983, Kurtosis = 2.7303, Variance = 0.0047, Kurtosis Index = 69.4385, Peak Index = 3.2229, Waveform Index = 1.2155, Pulse Index = 3.9175. ",
+    "output": "ball fault"
+  }
+]

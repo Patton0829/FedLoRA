@@ -16,6 +16,12 @@ datasets.utils.logging.set_verbosity_error()
 device_map = "auto"
 max_new_token: int = 32
 verbose: bool = False
+KNOWN_LABELS = [
+    "normal",
+    "ball fault",
+    "inner race fault",
+    "outer race fault",
+]
 
 
 def setup_seed(seed):
@@ -48,6 +54,32 @@ def normalize_label(text):
     normalized = normalized.splitlines()[0].strip()
     normalized = re.sub(r"^[a-z]\.\s*", "", normalized)
     normalized = re.sub(r"[.\s]+$", "", normalized)
+
+    alias_map = {
+        "bearing is normal": "normal",
+        "healthy": "normal",
+        "healthy bearing": "normal",
+        "ball": "ball fault",
+        "ballfault": "ball fault",
+        "inner race": "inner race fault",
+        "inner-race fault": "inner race fault",
+        "inner ring fault": "inner race fault",
+        "outer race": "outer race fault",
+        "outer-race fault": "outer race fault",
+        "outer ring fault": "outer race fault",
+    }
+
+    if normalized in alias_map:
+        return alias_map[normalized]
+
+    for label in KNOWN_LABELS:
+        if label in normalized:
+            return label
+
+    for alias, label in alias_map.items():
+        if alias in normalized:
+            return label
+
     return normalized
 
 
@@ -86,7 +118,87 @@ def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png"):
     return save_path
 
 
-def evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name=None):
+def save_prediction_samples(samples, save_dir, filename):
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, filename)
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump(samples, f, ensure_ascii=False, indent=2)
+    return save_path
+
+
+def save_confusion_matrix(confusion_matrix, save_dir, filename):
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, filename)
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump(confusion_matrix, f, ensure_ascii=False, indent=2)
+    return save_path
+
+
+def plot_confusion_matrix_heatmap(confusion_matrix, save_dir, filename="confusion_matrix.png", title="Confusion Matrix"):
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, filename)
+
+    labels = [label for label in KNOWN_LABELS if label in confusion_matrix]
+    labels.extend([label for label in confusion_matrix if label not in labels and label != "unknown"])
+    pred_labels = labels + (["unknown"] if any("unknown" in row for row in confusion_matrix.values()) else [])
+
+    matrix = np.array([[confusion_matrix.get(true_label, {}).get(pred_label, 0) for pred_label in pred_labels] for true_label in labels])
+
+    display_map = {
+        "normal": "Normal",
+        "ball fault": "Ball Fault",
+        "inner race fault": "Inner Race Fault",
+        "outer race fault": "Outer Race Fault",
+        "unknown": "Unknown",
+    }
+    display_true_labels = [display_map.get(label, label) for label in labels]
+    display_pred_labels = [display_map.get(label, label) for label in pred_labels]
+
+    plt.rcParams["font.family"] = "serif"
+    plt.rcParams["font.serif"] = ["Times New Roman", "DejaVu Serif"]
+    fig, ax = plt.subplots(figsize=(8, 6.5))
+    im = ax.imshow(matrix, cmap="Blues", aspect="auto")
+    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    cbar.ax.tick_params(labelsize=11)
+
+    ax.set_xticks(np.arange(len(display_pred_labels)))
+    ax.set_yticks(np.arange(len(display_true_labels)))
+    ax.set_xticklabels(display_pred_labels, rotation=25, ha="right", fontsize=11)
+    ax.set_yticklabels(display_true_labels, fontsize=11)
+    ax.set_xlabel("Predicted Label", fontsize=12)
+    ax.set_ylabel("True Label", fontsize=12)
+    ax.set_title(title, fontsize=14, pad=12)
+
+    threshold = matrix.max() / 2 if matrix.size and matrix.max() > 0 else 0
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            value = int(matrix[i, j])
+            ax.text(
+                j,
+                i,
+                str(value),
+                ha="center",
+                va="center",
+                color="white" if value > threshold else "black",
+                fontsize=10,
+            )
+
+    fig.tight_layout()
+    fig.savefig(save_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    return save_path
+
+
+def evaluate_dataset_records(
+    model,
+    tokenizer,
+    prompter,
+    test_set,
+    dataset_name=None,
+    return_details=False,
+    sample_size=5,
+    mistake_sample_size=20,
+):
     label_set = sorted(
         {
             normalize_label(data_point.get("output", data_point.get("response", "")))
@@ -97,6 +209,10 @@ def evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name=
     right_count_dict = dict.fromkeys(label_set, 0)
     total_count_dict = dict.fromkeys(label_set, 0)
     acc_count_dict = dict.fromkeys(label_set, 0)
+    prediction_samples = []
+    mistake_samples = []
+    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS))
+    confusion_matrix = {label: {pred_label: 0 for pred_label in confusion_labels + ["unknown"]} for label in confusion_labels}
 
     sampling_kwargs = {
         "do_sample": False,
@@ -157,9 +273,35 @@ def evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name=
             print("predicted raw:", predicted_text)
             print("predicted normalized:", predicted_label)
 
-        if predicted_label == target:
+        is_correct = predicted_label == target
+        if is_correct:
             right_count_dict[target] += 1
         total_count_dict[target] += 1
+        confusion_pred_label = predicted_label if predicted_label in confusion_matrix[target] else "unknown"
+        confusion_matrix[target][confusion_pred_label] += 1
+
+        if len(prediction_samples) < sample_size:
+            prediction_samples.append(
+                {
+                    "instruction": data_point.get("instruction", ""),
+                    "input": model_input,
+                    "target": target,
+                    "predicted_raw": predicted_text,
+                    "predicted_normalized": predicted_label,
+                    "is_correct": is_correct,
+                }
+            )
+        if not is_correct and len(mistake_samples) < mistake_sample_size:
+            mistake_samples.append(
+                {
+                    "instruction": data_point.get("instruction", ""),
+                    "input": model_input,
+                    "target": target,
+                    "predicted_raw": predicted_text,
+                    "predicted_normalized": predicted_label,
+                    "is_correct": False,
+                }
+            )
 
     mean_acc = 0.0
 
@@ -183,11 +325,29 @@ def evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name=
     print("========== Accuracy ==========")
     print(mean_acc)
 
+    if return_details:
+        return {
+            "accuracy": mean_acc,
+            "per_label_accuracy": acc_count_dict,
+            "prediction_samples": prediction_samples,
+            "mistake_samples": mistake_samples,
+            "confusion_matrix": confusion_matrix,
+        }
+
     return mean_acc
 
 
-def global_evaluation(model, tokenizer, prompter, dev_data_path):
+def global_evaluation(model, tokenizer, prompter, dev_data_path, return_details=False, sample_size=5, mistake_sample_size=20):
     with open(dev_data_path, "r", encoding="utf-8") as f:
         test_set = json.load(f)
 
-    return evaluate_dataset_records(model, tokenizer, prompter, test_set, dataset_name="Global Evaluation")
+    return evaluate_dataset_records(
+        model,
+        tokenizer,
+        prompter,
+        test_set,
+        dataset_name="Global Evaluation",
+        return_details=return_details,
+        sample_size=sample_size,
+        mistake_sample_size=mistake_sample_size,
+    )
