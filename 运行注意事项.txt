@@ -56,5 +56,6 @@ python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_pat
 
 推理
 python ./GlobalModel_generated.py --base_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --lora_weights_path "E:/fl/fedlora/FedLoRA/lora-qwen-2b/10/2/adapter_model.bin" --lora_config_path "E:/fl/fedlora/FedLoRA/lora-qwen-2b/10" --prompt_template "alpaca"
+python ./GlobalModel_generated.py --base_model "/public/home/wanghaolong/fl/models/Qwen3-8B" --lora_weights_path "./lora-qwen3-8b/10/final/adapter_model.bin" --lora_config_path "./lora-qwen3-8b/10/final" --prompt_template "alpaca"
 
       
