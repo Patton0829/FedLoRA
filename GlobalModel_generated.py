@@ -64,6 +64,7 @@ def main(
     lora_config_path: str = "",  # provide only the file path, excluding the file name 'adapter_config.json'
     prompt_template: str = "",  # The prompt template to use, will default to alpaca.
     server_name: str = "127.0.0.1",
+    root_path: str = "",
     share_gradio: bool = False,
 ):
     base_model = base_model or os.environ.get("BASE_MODEL", "")
@@ -226,7 +227,14 @@ def main(
         description="Shepherd is a LLM that has been fine-tuned in a federated manner ",
     ).queue()
 
-    sherpherd_UI.launch(server_name=server_name, share=share_gradio)
+    launch_kwargs = {
+        "server_name": server_name,
+        "share": share_gradio,
+    }
+    if root_path:
+        launch_kwargs["root_path"] = root_path
+
+    sherpherd_UI.launch(**launch_kwargs)
 
 
 
