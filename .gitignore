@@ -6,3 +6,6 @@ output/
 lora-shepherd-Qwen3b/
 *.out
 *.sbatch
+
+lora-qwen-2b/
+resault/

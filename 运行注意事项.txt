@@ -51,6 +51,10 @@ python /root/fl/fedlora/FedLoRA/GlobalModel_generate.py \
   --lora_config_path "/root/fl/fedlora/FedLoRA/lora-qwen-2b-test/10"
 
 
-python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 5 --num_clients 10 --train_on_inputs --local_micro_batch_size 1 --local_batch_size 8
+python ./main.py --global_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --data_path "./data" --output_dir "./lora-qwen-2b/" --num_communication_rounds 10 --num_clients 100 --local_micro_batch_size 2 --local_batch_size 8
+
+
+推理
+python ./GlobalModel_generated.py --base_model "E:/fl/models/Qwen/Qwen3___5-2B-Base" --lora_weights_path "E:/fl/fedlora/FedLoRA/lora-qwen-2b/10/2/adapter_model.bin" --lora_config_path "E:/fl/fedlora/FedLoRA/lora-qwen-2b/10" --prompt_template "alpaca"
 
       
