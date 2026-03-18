@@ -136,6 +136,9 @@ def main(
             attention_mask = attention_mask.to(device)
         generation_config = GenerationConfig(
             do_sample=False,
+            temperature=0.0,
+            top_p=1.0,
+            top_k=50,
             num_beams=num_beams,
             pad_token_id=tokenizer.pad_token_id,
             bos_token_id=tokenizer.bos_token_id,
