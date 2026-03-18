@@ -2,8 +2,8 @@
 export HF_ENDPOINT=https://hf-mirror.com
 
 使用本地下载的千问大模型：
-python ./main.py --global_model "E:/fl/models/Qwen2.5-1.5B-Instruct" --data_path "./data" --output_dir "./lora-Qwen2.5-1.5B-Instruct/" --num_communication_rounds 10 --num_clients 10 --local_micro_batch_size 8 --local_batch_size 16 --local_val_set_size 0.1 --seed 42
-python ./main.py --global_model "/public/home/wanghaolong/fl/models/Qwen3-4B-Instruct-2507" --data_path "./data" --output_dir "./lora-Qwen3-4B-Instruct-2507/" --num_communication_rounds 5 --num_clients 10 --local_micro_batch_size 12 --local_batch_size 24 --local_val_set_size 0.2 --seed 42
+python ./main.py --global_model "E:/fl/models/Qwen2.5-1.5B-Instruct" --data_path "./data" --output_dir "./lora-Qwen2.5-1.5B-Instruct/" --num_communication_rounds 10 --num_clients 10 --local_micro_batch_size 8 --local_batch_size 16 --local_val_set_size 0.2 --seed 42
+python ./main.py --global_model "/public/home/wanghaolong/fl/models/Qwen3-4B-Instruct-2507" --data_path "./data" --output_dir "./lora-Qwen3-4B-Instruct-2507/" --num_communication_rounds 5 --num_clients 10 --local_micro_batch_size 16 --local_batch_size 32 --local_val_set_size 0.2 --seed 42
 
 推理
 python ./GlobalModel_generated.py --base_model "E:/fl/models/Qwen2.5-1.5B-Instruct" --lora_weights_path "E:/fl/fedlora/FedLoRA/lora-Qwen2.5-1.5B-Instruct/10/2/adapter_model.bin" --lora_config_path "E:/fl/fedlora/FedLoRA/lora-Qwen2.5-1.5B-Instruct/10" --prompt_template "alpaca"
@@ -12,4 +12,8 @@ python ./GlobalModel_generated.py --base_model "/public/home/wanghaolong/fl/mode
 
 划分数据集：
 python client_data_allocation.py 10 1 jnu
+
+清空目录
+rm -rf ./resault/10
+
    
