@@ -19,19 +19,19 @@ class GeneralClient:
         self.output_dir = output_dir
         self.local_output_dir = os.path.join(self.output_dir, "trainer_saved", "local_output_{}".format(self.client_id))
 
-    def preprare_local_dataset(self, generate_and_tokenize_prompt, local_val_set_size):
+    def preprare_local_dataset(self, generate_and_tokenize_prompt, local_val_set_size, seed=42):
         if local_val_set_size > 0:
             local_train_val = self.local_data["train"].train_test_split(
-                test_size=local_val_set_size, shuffle=True, seed=42
+                test_size=local_val_set_size, shuffle=True, seed=seed
             )
             self.local_train_dataset = (
-                local_train_val["train"].shuffle().map(generate_and_tokenize_prompt)
+                local_train_val["train"].shuffle(seed=seed).map(generate_and_tokenize_prompt)
             )
             self.local_eval_dataset = (
-                local_train_val["test"].shuffle().map(generate_and_tokenize_prompt)
+                local_train_val["test"].shuffle(seed=seed).map(generate_and_tokenize_prompt)
             )
         else:
-            self.local_train_dataset = self.local_data["train"].shuffle().map(generate_and_tokenize_prompt)
+            self.local_train_dataset = self.local_data["train"].shuffle(seed=seed).map(generate_and_tokenize_prompt)
             self.local_eval_dataset = None
         self.local_val_set_size = local_val_set_size
 
@@ -42,7 +42,8 @@ class GeneralClient:
                             local_num_epochs,
                             local_learning_rate,
                             group_by_length,
-                            ddp):
+                            ddp,
+                            seed=42):
         use_cuda = torch.cuda.is_available()
         self.train_args = transformers.TrainingArguments(
             per_device_train_batch_size=local_micro_batch_size,
@@ -61,6 +62,9 @@ class GeneralClient:
             ddp_find_unused_parameters=False if ddp else None,
             dataloader_drop_last=False,
             dataloader_pin_memory=use_cuda,
+            seed=seed,
+            data_seed=seed,
+            full_determinism=True,
         )
         self.local_trainer = transformers.Trainer(model=self.model,
                                                   train_dataset=self.local_train_dataset,

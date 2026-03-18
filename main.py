@@ -1,8 +1,10 @@
 import os
+import random
 from typing import List
 from tqdm import tqdm
 import fire
 import torch
+import numpy as np
 from transformers import LlamaTokenizer, LlamaForCausalLM, AutoModelForCausalLM, AutoTokenizer, GPT2LMHeadModel, GPT2Tokenizer
 from peft import (
     LoraConfig,
@@ -26,6 +28,23 @@ with open(file_path, 'r') as file:
     keys = json.load(file)
 
 datasets.utils.logging.set_verbosity_error()
+
+
+def setup_reproducibility(seed: int):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    try:
+        torch.use_deterministic_algorithms(True, warn_only=True)
+    except Exception:
+        pass
 
 
 def fl_finetune(
@@ -59,7 +78,10 @@ def fl_finetune(
         group_by_length: bool = False,
         resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
         prompt_template_name: str = "alpaca",  # The prompt template to use, will default to alpaca.
+        seed: int = 42,
 ):
+    setup_reproducibility(seed)
+
     if int(os.environ.get("LOCAL_RANK", 0)) == 0:
         print(
             f"Federated Finetuning LLM-LoRA with params:\n"
@@ -85,6 +107,7 @@ def fl_finetune(
             f"group_by_length: {group_by_length}\n"
             f"resume_from_checkpoint: {resume_from_checkpoint or False}\n"
             f"prompt template: {prompt_template_name}\n"
+            f"seed: {seed}\n"
         )
     assert (
         global_model
@@ -230,14 +253,15 @@ def fl_finetune(
             client = GeneralClient(client_id, model, data_path, output_dir)
 
             print("\nPreparing the local dataset and trainer for Client_{}".format(client_id))
-            client.preprare_local_dataset(generate_and_tokenize_prompt, local_val_set_size)
+            client.preprare_local_dataset(generate_and_tokenize_prompt, local_val_set_size, seed)
             client.build_local_trainer(tokenizer,
                                        local_micro_batch_size,
                                        gradient_accumulation_steps,
                                        local_num_epochs,
                                        local_learning_rate,
                                        group_by_length,
-                                       ddp)
+                                       ddp,
+                                       seed)
 
             print("Initiating the local training of Client_{}".format(client_id))
             client.initiate_local_training()
