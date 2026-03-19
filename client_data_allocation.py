@@ -16,6 +16,8 @@ train_data_path = (
     if len(sys.argv) > 4
     else os.path.join("dataset", dataset_name, f"{dataset_name}_train.json")
 )
+default_alpha = 5.0 if num_clients <= 20 else 10.0
+dirichlet_alpha = float(sys.argv[5]) if len(sys.argv) > 5 else default_alpha
 
 seed = 42
 np.random.seed(seed)
@@ -81,10 +83,14 @@ with open(os.path.join(data_path, "global_test.json"), "w", encoding="utf-8") as
 if diff_quantity:
     min_size = 0
     min_require_size = 40
-    alpha = 0.5
+    alpha = dirichlet_alpha
 
     dataset_size = len(remaining_df)
     categories = remaining_df["category"].unique().tolist()
+    print(
+        f"Using milder heterogeneous partition with Dirichlet alpha={alpha:.2f}. "
+        "Larger alpha means weaker heterogeneity and more balanced client label distributions."
+    )
 
     while min_size < min_require_size:
         idx_partition = [[] for _ in range(num_clients)]
@@ -186,7 +192,7 @@ def plot_client_distribution(distribution_by_client, save_dir):
         ax.text(
             0.5,
             -0.18,
-            f"Client {client_id + 1}",
+            f"Client_{client_id}",
             transform=ax.transAxes,
             ha="center",
             va="top",
