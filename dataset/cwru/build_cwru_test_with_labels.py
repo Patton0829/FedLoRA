@@ -1,6 +1,13 @@
 import json
 from pathlib import Path
 
+DIAGNOSIS_INSTRUCTION = (
+    "You are an expert in bearing fault diagnosis. Based on the provided time-domain "
+    "features, identify the bearing condition and output only one label from the following "
+    "options: inner race fault, normal, outer race fault, ball fault. Do not output any "
+    "explanation, punctuation, or extra words."
+)
+
 
 def extract_label(label_item: dict) -> str:
     if "label" in label_item:
@@ -31,6 +38,7 @@ def main() -> None:
     merged_data = []
     for sample, label_item in zip(test_data, labels_data):
         merged_sample = dict(sample)
+        merged_sample["instruction"] = DIAGNOSIS_INSTRUCTION
         merged_sample["output"] = extract_label(label_item)
         merged_data.append(merged_sample)
 

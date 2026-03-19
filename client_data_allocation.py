@@ -31,13 +31,43 @@ DISPLAY_LABELS = {
 }
 
 DISPLAY_ORDER = ["normal", "ball fault", "inner race fault", "outer race fault"]
+STRICT_DIAGNOSIS_INSTRUCTION = (
+    "You are an expert in bearing fault diagnosis. Based on the provided time-domain features, "
+    "identify the bearing condition and output only one label from the following options: "
+    "inner race fault, normal, outer race fault, ball fault. "
+    "Do not output any explanation, punctuation, or extra words."
+)
+CANONICAL_LABELS = {
+    "normal": "normal",
+    "ball fault": "ball fault",
+    "inner race fault": "inner race fault",
+    "outer race fault": "outer race fault",
+}
+
+
+def canonicalize_output_label(label):
+    normalized = str(label).strip().lower()
+    alias_map = {
+        "healthy": "normal",
+        "bearing is normal": "normal",
+        "ball": "ball fault",
+        "ballfault": "ball fault",
+        "inner race": "inner race fault",
+        "inner ring fault": "inner race fault",
+        "outer race": "outer race fault",
+        "outer ring fault": "outer race fault",
+    }
+    if normalized in CANONICAL_LABELS:
+        return CANONICAL_LABELS[normalized]
+    if normalized in alias_map:
+        return alias_map[normalized]
+    return normalized
 
 
 def standardize_record(record):
-    instruction = record.get("instruction", "")
+    instruction = STRICT_DIAGNOSIS_INSTRUCTION
     model_input = record.get("input", record.get("context", ""))
-    model_output = record.get("output", record.get("response", ""))
-    category = record.get("category", model_output)
+    model_output = canonicalize_output_label(record.get("output", record.get("response", "")))
 
     return {
         "instruction": instruction,
@@ -55,11 +85,10 @@ df["category"] = [record.get("output", "") for record in records]
 def remove_category_column(dataframe):
     return dataframe.drop(columns=["category"], errors="ignore")
 
-sorted_df = df.sort_values(by=["category"]).reset_index(drop=True)
-grouped = sorted_df.groupby("category", group_keys=False)
+grouped = df.groupby("category", group_keys=False)
 sampled_df = grouped.apply(lambda x: x.sample(n=min(10, len(x)), random_state=seed))
 sampled_df = sampled_df.reset_index(drop=True)
-remaining_df = sorted_df.drop(index=sampled_df.index).reset_index(drop=True)
+remaining_df = df.drop(index=sampled_df.index).sample(frac=1, random_state=seed).reset_index(drop=True)
 
 data_path = os.path.join("data", str(num_clients))
 os.makedirs(data_path, exist_ok=True)
@@ -122,7 +151,7 @@ else:
 client_distribution = {}
 for client_id, idx in enumerate(idx_partition):
     print(f"\n Generating the local training dataset of Client_{client_id}")
-    sub_remaining_df = remaining_df.loc[idx].reset_index(drop=True)
+    sub_remaining_df = remaining_df.loc[idx].sample(frac=1, random_state=seed + client_id).reset_index(drop=True)
     sub_remaining_df_records = remove_category_column(sub_remaining_df).to_dict(orient="records")
     print(f"Local sample count of Client_{client_id}: {len(sub_remaining_df_records)}")
     client_distribution[client_id] = sub_remaining_df["category"].value_counts().to_dict()

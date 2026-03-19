@@ -66,7 +66,7 @@ def fl_finetune(
         local_batch_size: int = 16,  # 64,
         local_micro_batch_size: int = 8,
         local_num_epochs: int = 1,
-        local_learning_rate: float = 1e-4,
+        local_learning_rate: float = 5e-5,
         local_val_set_size: int = 0,
         local_save_steps: int = 3,
         cutoff_len: int = 512,

@@ -2,6 +2,7 @@ import json
 import os
 import random
 import re
+from difflib import SequenceMatcher
 
 import datasets
 import matplotlib.pyplot as plt
@@ -22,6 +23,12 @@ KNOWN_LABELS = [
     "inner race fault",
     "outer race fault",
 ]
+STRICT_DIAGNOSIS_INSTRUCTION = (
+    "You are an expert in bearing fault diagnosis. Based on the provided time-domain features, "
+    "identify the bearing condition and output only one label from the following options: "
+    "inner race fault, normal, outer race fault, ball fault. "
+    "Do not output any explanation, punctuation, or extra words."
+)
 
 
 def setup_seed(seed):
@@ -83,6 +90,27 @@ def normalize_label(text):
     return normalized
 
 
+def coerce_to_known_label(predicted_text):
+    normalized = normalize_label(predicted_text)
+    if normalized in KNOWN_LABELS:
+        return normalized
+
+    if not normalized:
+        return "normal"
+
+    best_label = KNOWN_LABELS[0]
+    best_score = -1.0
+    for label in KNOWN_LABELS:
+        score = SequenceMatcher(None, normalized, label).ratio()
+        if label.split()[0] in normalized or normalized.split()[0] in label:
+            score += 0.15
+        if score > best_score:
+            best_score = score
+            best_label = label
+
+    return best_label
+
+
 def save_acc_history(acc_list, save_dir, filename="acc_history.json", round_records=None):
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, filename)
@@ -139,8 +167,8 @@ def plot_confusion_matrix_heatmap(confusion_matrix, save_dir, filename="confusio
     save_path = os.path.join(save_dir, filename)
 
     labels = [label for label in KNOWN_LABELS if label in confusion_matrix]
-    labels.extend([label for label in confusion_matrix if label not in labels and label != "unknown"])
-    pred_labels = labels + (["unknown"] if any("unknown" in row for row in confusion_matrix.values()) else [])
+    labels.extend([label for label in confusion_matrix if label not in labels and label in KNOWN_LABELS])
+    pred_labels = labels
 
     matrix = np.array([[confusion_matrix.get(true_label, {}).get(pred_label, 0) for pred_label in pred_labels] for true_label in labels])
 
@@ -149,7 +177,6 @@ def plot_confusion_matrix_heatmap(confusion_matrix, save_dir, filename="confusio
         "ball fault": "Ball Fault",
         "inner race fault": "Inner Race Fault",
         "outer race fault": "Outer Race Fault",
-        "unknown": "Unknown",
     }
     display_true_labels = [display_map.get(label, label) for label in labels]
     display_pred_labels = [display_map.get(label, label) for label in pred_labels]
@@ -212,7 +239,7 @@ def evaluate_dataset_records(
     prediction_samples = []
     mistake_samples = []
     confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS))
-    confusion_matrix = {label: {pred_label: 0 for pred_label in confusion_labels + ["unknown"]} for label in confusion_labels}
+    confusion_matrix = {label: {pred_label: 0 for pred_label in confusion_labels} for label in confusion_labels}
 
     sampling_kwargs = {
         "do_sample": False,
@@ -239,7 +266,7 @@ def evaluate_dataset_records(
 
         model_input = data_point.get("input", data_point.get("context", ""))
         test_prompt = prompter.generate_prompt(
-            data_point["instruction"],
+            STRICT_DIAGNOSIS_INSTRUCTION,
             model_input,
             None,
         )
@@ -264,7 +291,7 @@ def evaluate_dataset_records(
 
         generated_tokens = generation_output.sequences[0][input_ids.shape[-1] :]
         predicted_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
-        predicted_label = normalize_label(predicted_text)
+        predicted_label = coerce_to_known_label(predicted_text)
 
         if verbose:
             print("-------------------")
@@ -277,8 +304,7 @@ def evaluate_dataset_records(
         if is_correct:
             right_count_dict[target] += 1
         total_count_dict[target] += 1
-        confusion_pred_label = predicted_label if predicted_label in confusion_matrix[target] else "unknown"
-        confusion_matrix[target][confusion_pred_label] += 1
+        confusion_matrix[target][predicted_label] += 1
 
         if len(prediction_samples) < sample_size:
             prediction_samples.append(
