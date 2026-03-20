@@ -13,6 +13,7 @@ from peft import (
 )
 from fed_utils import (
     FedAvg,
+    SCAFFOLD,
     client_selection,
     evaluate_dataset_records,
     global_evaluation,
@@ -59,14 +60,15 @@ def fl_finetune(
         output_dir: str = './lora-shepherd/',
         # FL hyperparamas
         client_selection_strategy: str = 'random',
-        client_selection_frac: float = 0.5,
+        aggregation_algorithm: str = 'scaffold',
+        client_selection_frac: float = 1.0,
         num_communication_rounds: int = 10,
         num_clients: int = 10,
         # Local training hyperparams
         local_batch_size: int = 16,  # 64,
         local_micro_batch_size: int = 8,
         local_num_epochs: int = 1,
-        local_learning_rate: float = 5e-5,
+        local_learning_rate: float = 1e-4,
         local_val_set_size: int = 0,
         local_save_steps: int = 3,
         cutoff_len: int = 512,
@@ -93,6 +95,7 @@ def fl_finetune(
             f"data_path: {data_path}\n"
             f"output_dir: {output_dir}\n"
             f"client_selection_strategy: {client_selection_strategy}\n"
+            f"aggregation_algorithm: {aggregation_algorithm}\n"
             f"client_selection_frac: {client_selection_frac}\n"
             f"num_communication_rounds: {num_communication_rounds}\n"
             f"num_clients: {num_clients}\n"
@@ -241,6 +244,8 @@ def fl_finetune(
     previously_selected_clients_set = set()
     last_client_id = None
     local_dataset_len_dict = dict()
+    local_step_count_dict = dict()
+    scaffold_state = None
     output_dir = os.path.join(output_dir, str(num_clients))
     result_dir = os.path.join("./resault", str(num_clients))
     final_output_dir = os.path.join(output_dir, "final")
@@ -260,6 +265,12 @@ def fl_finetune(
 
             print("\nPreparing the local dataset and trainer for Client_{}".format(client_id))
             client.preprare_local_dataset(generate_and_tokenize_prompt, local_val_set_size, seed)
+            server_control = None
+            client_control = None
+            if aggregation_algorithm.lower() == "scaffold":
+                if scaffold_state is not None:
+                    server_control = scaffold_state.get("server_control")
+                    client_control = scaffold_state.get("client_controls", {}).get(client_id)
             client.build_local_trainer(tokenizer,
                                        local_micro_batch_size,
                                        gradient_accumulation_steps,
@@ -267,7 +278,10 @@ def fl_finetune(
                                        local_learning_rate,
                                        group_by_length,
                                        ddp,
-                                       seed)
+                                       fl_algorithm=aggregation_algorithm,
+                                       server_control=server_control,
+                                       client_control=client_control,
+                                       seed=seed)
 
             print("Initiating the local training of Client_{}".format(client_id))
             client.initiate_local_training()
@@ -293,17 +307,30 @@ def fl_finetune(
             )
 
             print("\nTerminating the local training of Client_{}".format(client_id))
-            model, local_dataset_len_dict, previously_selected_clients_set, last_client_id = client.terminate_local_training(
-                epoch, local_dataset_len_dict, previously_selected_clients_set)
+            model, local_dataset_len_dict, local_step_count_dict, previously_selected_clients_set, last_client_id = client.terminate_local_training(
+                epoch, local_dataset_len_dict, local_step_count_dict, previously_selected_clients_set)
             del client
 
         print("Collecting the weights of clients and performing aggregation")
-        model = FedAvg(model,
-                       selected_clients_set,
-                       output_dir,
-                       local_dataset_len_dict,
-                       epoch,
-                       )
+        if aggregation_algorithm.lower() == "scaffold":
+            model, scaffold_state = SCAFFOLD(
+                model,
+                selected_clients_set,
+                output_dir,
+                local_dataset_len_dict,
+                epoch,
+                scaffold_state=scaffold_state,
+                num_clients=num_clients,
+                local_steps=local_step_count_dict,
+                local_lr=local_learning_rate,
+            )
+        else:
+            model = FedAvg(model,
+                           selected_clients_set,
+                           output_dir,
+                           local_dataset_len_dict,
+                           epoch,
+                           )
         torch.save(model.state_dict(), os.path.join(output_dir, str(epoch), "adapter_model.bin"))
         config.save_pretrained(output_dir)
 
