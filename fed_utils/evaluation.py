@@ -1,4 +1,5 @@
 import json
+import math
 import os
 import random
 import re
@@ -132,12 +133,25 @@ def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png"):
     save_path = os.path.join(save_dir, filename)
 
     rounds = list(range(1, len(acc_list) + 1))
-    plt.figure(figsize=(8, 5))
+    if not rounds:
+        return save_path
+
+    max_xticks = min(10, len(rounds))
+    if len(rounds) <= max_xticks:
+        xticks = rounds
+    else:
+        step = max(1, math.ceil((len(rounds) - 1) / (max_xticks - 1)))
+        xticks = list(range(1, len(rounds) + 1, step))
+        if xticks[-1] != rounds[-1]:
+            xticks.append(rounds[-1])
+
+    figure_width = max(8, min(14, len(rounds) * 0.18))
+    plt.figure(figsize=(figure_width, 5))
     plt.plot(rounds, acc_list, marker="o", linewidth=2)
     plt.title("Global Evaluation Accuracy")
     plt.xlabel("Communication Round")
     plt.ylabel("Accuracy")
-    plt.xticks(rounds)
+    plt.xticks(xticks)
     plt.grid(True, linestyle="--", alpha=0.6)
     plt.tight_layout()
     plt.savefig(save_path, dpi=300)
