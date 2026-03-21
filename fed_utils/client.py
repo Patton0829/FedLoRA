@@ -133,7 +133,7 @@ class GeneralClient:
             ddp_find_unused_parameters=False if ddp else None,
             dataloader_drop_last=False,
             dataloader_pin_memory=use_cuda,
-            lr_scheduler_type="constant" if is_scaffold else "linear",
+            lr_scheduler_type="linear",
             max_grad_norm=0.0 if is_scaffold else 1.0,
             weight_decay=0.0 if is_scaffold else 0.0,
             seed=seed,
