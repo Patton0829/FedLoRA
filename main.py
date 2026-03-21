@@ -289,22 +289,36 @@ def fl_finetune(
             print("Local training starts ... ")
             client.train()
 
-            local_acc = evaluate_dataset_records(
-                client.model,
-                tokenizer,
-                prompter,
-                client.local_eval_records,
-                dataset_name=f"Client_{client_id} Local Evaluation",
-            )
-            local_client_metrics.append(
-                {
-                    "client_id": int(client_id),
-                    "eval_source": client.local_eval_source,
-                    "eval_file": client.local_data_path,
-                    "eval_samples": int(len(client.local_eval_records)),
-                    "local_accuracy": float(local_acc),
-                }
-            )
+            if local_val_set_size > 0:
+                local_acc = evaluate_dataset_records(
+                    client.model,
+                    tokenizer,
+                    prompter,
+                    client.local_eval_records,
+                    dataset_name=f"Client_{client_id} Local Evaluation",
+                )
+                local_client_metrics.append(
+                    {
+                        "client_id": int(client_id),
+                        "eval_source": client.local_eval_source,
+                        "eval_file": client.local_data_path,
+                        "eval_samples": int(len(client.local_eval_records)),
+                        "local_accuracy": float(local_acc),
+                        "local_eval_skipped": False,
+                    }
+                )
+            else:
+                print(f"Skip local generative evaluation for Client_{client_id} because local_val_set_size=0")
+                local_client_metrics.append(
+                    {
+                        "client_id": int(client_id),
+                        "eval_source": client.local_eval_source,
+                        "eval_file": client.local_data_path,
+                        "eval_samples": 0,
+                        "local_accuracy": None,
+                        "local_eval_skipped": True,
+                    }
+                )
 
             print("\nTerminating the local training of Client_{}".format(client_id))
             model, local_dataset_len_dict, local_step_count_dict, previously_selected_clients_set, last_client_id = client.terminate_local_training(
