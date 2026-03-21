@@ -1,5 +1,6 @@
 import os
 import random
+import re
 from typing import List
 from tqdm import tqdm
 import fire
@@ -83,6 +84,9 @@ def fl_finetune(
         train_on_inputs: bool = False,
         group_by_length: bool = False,
         resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
+        resume_round: int = None,  # 0-based epoch index to resume from; inferred from checkpoint path when omitted
+        use_gradient_checkpointing: bool = True,
+        gradient_checkpointing_use_reentrant: bool = False,
         prompt_template_name: str = "alpaca",  # The prompt template to use, will default to alpaca.
         seed: int = 42,
 ):
@@ -113,6 +117,9 @@ def fl_finetune(
             f"train_on_inputs: {train_on_inputs}\n"
             f"group_by_length: {group_by_length}\n"
             f"resume_from_checkpoint: {resume_from_checkpoint or False}\n"
+            f"resume_round: {resume_round if resume_round is not None else 'auto'}\n"
+            f"use_gradient_checkpointing: {use_gradient_checkpointing}\n"
+            f"gradient_checkpointing_use_reentrant: {gradient_checkpointing_use_reentrant}\n"
             f"prompt template: {prompt_template_name}\n"
             f"seed: {seed}\n"
         )
@@ -224,7 +231,16 @@ def fl_finetune(
                                                                     ]  # could be sped up, probably
         return tokenized_full_prompt
 
-    model.gradient_checkpointing_enable()
+    if use_gradient_checkpointing:
+        try:
+            model.gradient_checkpointing_enable(
+                gradient_checkpointing_kwargs={"use_reentrant": gradient_checkpointing_use_reentrant}
+            )
+        except TypeError:
+            # Older transformers versions may not support kwargs.
+            model.gradient_checkpointing_enable()
+        if hasattr(model, "enable_input_require_grads"):
+            model.enable_input_require_grads()
     config = LoraConfig(
         r=lora_r,
         lora_alpha=lora_alpha,
@@ -252,8 +268,47 @@ def fl_finetune(
 
     acc_list = []
     round_records = []
+    start_epoch = 0
 
-    for epoch in tqdm(range(num_communication_rounds)):
+    if resume_from_checkpoint:
+        checkpoint_path = resume_from_checkpoint
+        if os.path.isdir(checkpoint_path):
+            candidate = os.path.join(checkpoint_path, "adapter_model.bin")
+            if os.path.exists(candidate):
+                checkpoint_path = candidate
+        if not os.path.exists(checkpoint_path):
+            raise FileNotFoundError(f"resume_from_checkpoint not found: {checkpoint_path}")
+
+        state_dict = torch.load(checkpoint_path, map_location="cpu")
+        load_result = model.load_state_dict(state_dict, strict=False)
+        print(f"Loaded adapter from {checkpoint_path}")
+        if load_result.missing_keys:
+            print(f"Missing keys while loading: {len(load_result.missing_keys)}")
+        if load_result.unexpected_keys:
+            print(f"Unexpected keys while loading: {len(load_result.unexpected_keys)}")
+
+        if resume_round is not None:
+            start_epoch = int(resume_round)
+        else:
+            # Infer from .../<epoch_idx>/adapter_model.bin
+            parent_name = os.path.basename(os.path.dirname(checkpoint_path))
+            if re.fullmatch(r"\d+", parent_name):
+                start_epoch = int(parent_name) + 1
+        print(f"Resuming from epoch index {start_epoch} (human-readable round {start_epoch + 1})")
+
+        history_path = os.path.join(result_dir, "acc_history.json")
+        if os.path.exists(history_path):
+            try:
+                with open(history_path, "r", encoding="utf-8") as f:
+                    history_data = json.load(f)
+                if isinstance(history_data, list):
+                    round_records = history_data
+                    acc_list = [float(item["accuracy"]) for item in round_records if "accuracy" in item]
+                    print(f"Loaded existing accuracy history entries: {len(round_records)}")
+            except Exception as exc:
+                print(f"Warning: failed to load acc history from {history_path}: {exc}")
+
+    for epoch in tqdm(range(start_epoch, num_communication_rounds)):
 
         print("\nConducting the client selection")
         selected_clients_set = client_selection(num_clients, client_selection_frac, client_selection_strategy,
