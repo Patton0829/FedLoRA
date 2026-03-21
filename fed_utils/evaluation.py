@@ -24,6 +24,12 @@ KNOWN_LABELS = [
     "inner race fault",
     "outer race fault",
 ]
+LABEL_ABBREVIATIONS = {
+    "normal": "N",
+    "ball fault": "BF",
+    "inner race fault": "IRF",
+    "outer race fault": "ORF",
+}
 STRICT_DIAGNOSIS_INSTRUCTION = (
     "You are an expert in bearing fault diagnosis. Based on the provided time-domain features, "
     "identify the bearing condition and output only one label from the following options: "
@@ -67,6 +73,10 @@ def normalize_label(text):
         "bearing is normal": "normal",
         "healthy": "normal",
         "healthy bearing": "normal",
+        "n": "normal",
+        "bf": "ball fault",
+        "irf": "inner race fault",
+        "orf": "outer race fault",
         "ball": "ball fault",
         "ballfault": "ball fault",
         "inner race": "inner race fault",
@@ -168,11 +178,57 @@ def save_prediction_samples(samples, save_dir, filename):
     return save_path
 
 
+def _get_confusion_matrix_label_order(confusion_matrix):
+    labels = [label for label in KNOWN_LABELS if label in confusion_matrix]
+    labels.extend([label for label in confusion_matrix if label not in labels])
+    return labels
+
+
+def build_confusion_matrix_payload(confusion_matrix):
+    labels = _get_confusion_matrix_label_order(confusion_matrix)
+    count_confusion_matrix = {
+        true_label: {
+            pred_label: int(confusion_matrix.get(true_label, {}).get(pred_label, 0))
+            for pred_label in labels
+        }
+        for true_label in labels
+    }
+    row_totals = {
+        true_label: int(sum(count_confusion_matrix[true_label].values()))
+        for true_label in labels
+    }
+    percentage_confusion_matrix = {}
+    for true_label in labels:
+        row_total = row_totals[true_label]
+        percentage_confusion_matrix[true_label] = {}
+        for pred_label in labels:
+            count = count_confusion_matrix[true_label][pred_label]
+            percentage_confusion_matrix[true_label][pred_label] = (
+                float(count * 100.0 / row_total) if row_total else 0.0
+            )
+
+    return {
+        "label_order": labels,
+        "label_abbreviations": {
+            label: LABEL_ABBREVIATIONS.get(label, label) for label in labels
+        },
+        "count_confusion_matrix": count_confusion_matrix,
+        "percentage_confusion_matrix": percentage_confusion_matrix,
+        "row_totals": row_totals,
+        "total_samples": int(sum(row_totals.values())),
+    }
+
+
 def save_confusion_matrix(confusion_matrix, save_dir, filename):
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, filename)
+    payload = (
+        confusion_matrix
+        if isinstance(confusion_matrix, dict) and "count_confusion_matrix" in confusion_matrix
+        else build_confusion_matrix_payload(confusion_matrix)
+    )
     with open(save_path, "w", encoding="utf-8") as f:
-        json.dump(confusion_matrix, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2)
     return save_path
 
 
@@ -180,47 +236,56 @@ def plot_confusion_matrix_heatmap(confusion_matrix, save_dir, filename="confusio
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, filename)
 
-    labels = [label for label in KNOWN_LABELS if label in confusion_matrix]
-    labels.extend([label for label in confusion_matrix if label not in labels and label in KNOWN_LABELS])
-    pred_labels = labels
-
-    matrix = np.array([[confusion_matrix.get(true_label, {}).get(pred_label, 0) for pred_label in pred_labels] for true_label in labels])
-
-    display_map = {
-        "normal": "Normal",
-        "ball fault": "Ball Fault",
-        "inner race fault": "Inner Race Fault",
-        "outer race fault": "Outer Race Fault",
-    }
-    display_true_labels = [display_map.get(label, label) for label in labels]
-    display_pred_labels = [display_map.get(label, label) for label in pred_labels]
+    payload = (
+        confusion_matrix
+        if isinstance(confusion_matrix, dict) and "count_confusion_matrix" in confusion_matrix
+        else build_confusion_matrix_payload(confusion_matrix)
+    )
+    labels = payload["label_order"]
+    display_labels = [payload["label_abbreviations"].get(label, label) for label in labels]
+    count_matrix = np.array(
+        [
+            [payload["count_confusion_matrix"][true_label][pred_label] for pred_label in labels]
+            for true_label in labels
+        ],
+        dtype=float,
+    )
+    percentage_matrix = np.array(
+        [
+            [payload["percentage_confusion_matrix"][true_label][pred_label] for pred_label in labels]
+            for true_label in labels
+        ],
+        dtype=float,
+    )
 
     plt.rcParams["font.family"] = "serif"
     plt.rcParams["font.serif"] = ["Times New Roman", "DejaVu Serif"]
     fig, ax = plt.subplots(figsize=(8, 6.5))
-    im = ax.imshow(matrix, cmap="Blues", aspect="auto")
+    im = ax.imshow(percentage_matrix, cmap="Blues", aspect="auto", vmin=0, vmax=100)
     cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    cbar.set_label("Percentage (%)", fontsize=11)
     cbar.ax.tick_params(labelsize=11)
 
-    ax.set_xticks(np.arange(len(display_pred_labels)))
-    ax.set_yticks(np.arange(len(display_true_labels)))
-    ax.set_xticklabels(display_pred_labels, rotation=25, ha="right", fontsize=11)
-    ax.set_yticklabels(display_true_labels, fontsize=11)
+    ax.set_xticks(np.arange(len(display_labels)))
+    ax.set_yticks(np.arange(len(display_labels)))
+    ax.set_xticklabels(display_labels, rotation=0, ha="center", fontsize=11)
+    ax.set_yticklabels(display_labels, fontsize=11)
     ax.set_xlabel("Predicted Label", fontsize=12)
     ax.set_ylabel("True Label", fontsize=12)
     ax.set_title(title, fontsize=14, pad=12)
 
-    threshold = matrix.max() / 2 if matrix.size and matrix.max() > 0 else 0
-    for i in range(matrix.shape[0]):
-        for j in range(matrix.shape[1]):
-            value = int(matrix[i, j])
+    threshold = percentage_matrix.max() / 2 if percentage_matrix.size and percentage_matrix.max() > 0 else 0
+    for i in range(count_matrix.shape[0]):
+        for j in range(count_matrix.shape[1]):
+            count_value = int(count_matrix[i, j])
+            percentage_value = float(percentage_matrix[i, j])
             ax.text(
                 j,
                 i,
-                str(value),
+                f"{count_value}\n{percentage_value:.1f}%",
                 ha="center",
                 va="center",
-                color="white" if value > threshold else "black",
+                color="white" if percentage_value > threshold else "black",
                 fontsize=10,
             )
 
@@ -366,12 +431,13 @@ def evaluate_dataset_records(
     print(mean_acc)
 
     if return_details:
+        confusion_matrix_payload = build_confusion_matrix_payload(confusion_matrix)
         return {
             "accuracy": mean_acc,
             "per_label_accuracy": acc_count_dict,
             "prediction_samples": prediction_samples,
             "mistake_samples": mistake_samples,
-            "confusion_matrix": confusion_matrix,
+            "confusion_matrix": confusion_matrix_payload,
         }
 
     return mean_acc
