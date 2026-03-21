@@ -206,6 +206,32 @@ def build_confusion_matrix_payload(confusion_matrix):
             percentage_confusion_matrix[true_label][pred_label] = (
                 float(count * 100.0 / row_total) if row_total else 0.0
             )
+    col_totals = {
+        pred_label: int(sum(count_confusion_matrix[true_label][pred_label] for true_label in labels))
+        for pred_label in labels
+    }
+    total_samples = int(sum(row_totals.values()))
+    correct_samples = int(sum(count_confusion_matrix[label][label] for label in labels))
+
+    per_class_metrics = {}
+    for label in labels:
+        tp = float(count_confusion_matrix[label][label])
+        fp = float(col_totals[label] - tp)
+        fn = float(row_totals[label] - tp)
+        precision = tp / (tp + fp) if (tp + fp) else 0.0
+        recall = tp / (tp + fn) if (tp + fn) else 0.0
+        f1 = (2.0 * precision * recall / (precision + recall)) if (precision + recall) else 0.0
+        per_class_metrics[label] = {
+            "precision": float(precision),
+            "recall": float(recall),
+            "f1": float(f1),
+            "support": int(row_totals[label]),
+        }
+
+    macro_precision = float(np.mean([per_class_metrics[label]["precision"] for label in labels])) if labels else 0.0
+    macro_recall = float(np.mean([per_class_metrics[label]["recall"] for label in labels])) if labels else 0.0
+    macro_f1 = float(np.mean([per_class_metrics[label]["f1"] for label in labels])) if labels else 0.0
+    accuracy = float(correct_samples / total_samples) if total_samples else 0.0
 
     return {
         "label_order": labels,
@@ -215,7 +241,17 @@ def build_confusion_matrix_payload(confusion_matrix):
         "count_confusion_matrix": count_confusion_matrix,
         "percentage_confusion_matrix": percentage_confusion_matrix,
         "row_totals": row_totals,
-        "total_samples": int(sum(row_totals.values())),
+        "col_totals": col_totals,
+        "total_samples": total_samples,
+        "metrics": {
+            "accuracy": accuracy,
+            "precision": macro_precision,
+            "recall": macro_recall,
+            "macro_f1": macro_f1,
+            "macro_precision": macro_precision,
+            "macro_recall": macro_recall,
+        },
+        "per_class_metrics": per_class_metrics,
     }
 
 

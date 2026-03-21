@@ -355,20 +355,19 @@ def fl_finetune(
             prompter,
             dev_data_path,
             return_details=True,
-            sample_size=5,
+            sample_size=0,
             mistake_sample_size=20,
         )
         acc = global_eval_result["accuracy"]
-        sample_filename = f"round_{epoch + 1}_global_prediction_samples.json"
-        mistakes_filename = f"round_{epoch + 1}_global_mistakes.json"
-        confusion_filename = f"round_{epoch + 1}_global_confusion_matrix.json"
-        confusion_png_filename = f"round_{epoch + 1}_global_confusion_matrix.png"
-        save_prediction_samples(global_eval_result["prediction_samples"], result_dir, sample_filename)
-        save_prediction_samples(global_eval_result["mistake_samples"], result_dir, mistakes_filename)
-        save_confusion_matrix(global_eval_result["confusion_matrix"], result_dir, confusion_filename)
+        round_result_dir = os.path.join(result_dir, f"round_{epoch + 1}")
+        mistakes_filename = "mistake_samples.json"
+        confusion_filename = "confusion_matrix.json"
+        confusion_png_filename = "confusion_matrix.png"
+        save_prediction_samples(global_eval_result["mistake_samples"], round_result_dir, mistakes_filename)
+        save_confusion_matrix(global_eval_result["confusion_matrix"], round_result_dir, confusion_filename)
         plot_confusion_matrix_heatmap(
             global_eval_result["confusion_matrix"],
-            result_dir,
+            round_result_dir,
             filename=confusion_png_filename,
             title=f"Round {epoch + 1} Global Confusion Matrix",
         )
@@ -380,10 +379,10 @@ def fl_finetune(
                 "selected_clients": sorted(int(client_id) for client_id in selected_clients_set),
                 "local_client_metrics": local_client_metrics,
                 "global_eval_file": dev_data_path,
-                "global_prediction_samples_file": os.path.join(result_dir, sample_filename),
-                "global_mistakes_file": os.path.join(result_dir, mistakes_filename),
-                "global_confusion_matrix_file": os.path.join(result_dir, confusion_filename),
-                "global_confusion_matrix_png_file": os.path.join(result_dir, confusion_png_filename),
+                "global_prediction_samples_file": None,
+                "global_mistakes_file": os.path.join(round_result_dir, mistakes_filename),
+                "global_confusion_matrix_file": os.path.join(round_result_dir, confusion_filename),
+                "global_confusion_matrix_png_file": os.path.join(round_result_dir, confusion_png_filename),
                 "global_per_label_accuracy": global_eval_result["per_label_accuracy"],
                 "accuracy": float(acc),
             }
