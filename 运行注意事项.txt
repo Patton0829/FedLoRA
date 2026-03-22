@@ -17,4 +17,4 @@ python client_data_allocation.py 10 1 jnu
 清空目录
 rm -rf ./resault/10
 
-   
+python main.py --global_model "/public/home/wanghaolong/fl/models/Qwen2.5-1.5B-Instruct" --num_clients 10 --num_communication_rounds 500 --resume_from_checkpoint "/public/home/wanghaolong/fl/fedlora/FedLoRA/lora-Qwen2.5-1.5B-Instruct/10/46/adapter_model.bin" --resume_round 47 --use_gradient_checkpointing False

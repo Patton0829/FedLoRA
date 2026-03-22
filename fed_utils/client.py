@@ -178,6 +178,27 @@ class GeneralClient:
         train_result = self.local_trainer.train()
         self.local_num_steps = int(getattr(train_result, "global_step", self.local_trainer.state.global_step) or 0)
 
+    def _restore_model_forward_after_trainer(self):
+        """
+        Prevent recursive wrapper accumulation from repeated Trainer/Accelerate construction.
+        When the same model instance is prepared many times, accelerate may keep wrapping
+        model.forward (autocast + convert_to_fp32), eventually causing RecursionError.
+        """
+        accelerator = getattr(self.local_trainer, "accelerator", None)
+        if accelerator is not None:
+            try:
+                self.model = accelerator.unwrap_model(self.model)
+            except Exception:
+                pass
+
+        original_forward = getattr(self.model, "_original_forward", None)
+        if original_forward is not None:
+            self.model.forward = original_forward
+            try:
+                delattr(self.model, "_original_forward")
+            except Exception:
+                pass
+
     def terminate_local_training(self, epoch, local_dataset_len_dict, local_step_count_dict, previously_selected_clients_set):
 
         local_dataset_len_dict[self.client_id] = len(self.local_train_dataset)
@@ -189,6 +210,7 @@ class GeneralClient:
 
         older_adapter_weight = get_peft_model_state_dict(self.model, self.params_dict_old, "default")
         set_peft_model_state_dict(self.model, older_adapter_weight, "default")
+        self._restore_model_forward_after_trainer()
         previously_selected_clients_set = previously_selected_clients_set | set({self.client_id})
         last_client_id = self.client_id
 
