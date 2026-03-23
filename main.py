@@ -82,6 +82,7 @@ def fl_finetune(
         local_num_epochs: int = 1,
         local_learning_rate: float = 1e-4,
         local_val_set_size: int = 0,
+        eval_batch_size: int = 16,
         local_save_steps: int = 3,
         cutoff_len: int = 512,
         # LoRA hyperparams
@@ -123,6 +124,7 @@ def fl_finetune(
             f"local_num_epochs: {local_num_epochs}\n"
             f"local_learning_rate: {local_learning_rate}\n"
             f"local_val_set_size: {local_val_set_size}\n"
+            f"eval_batch_size: {eval_batch_size}\n"
             f"local_save_steps: {local_save_steps}\n"
             f"cutoff_len: {cutoff_len}\n"
             f"lora_r: {lora_r}\n"
@@ -366,6 +368,7 @@ def fl_finetune(
                     prompter,
                     client.local_eval_records,
                     dataset_name=f"Client_{client_id} Local Evaluation",
+                    eval_batch_size=eval_batch_size,
                 )
                 local_client_metrics.append(
                     {
@@ -440,6 +443,7 @@ def fl_finetune(
             return_details=True,
             sample_size=0,
             mistake_sample_size=20,
+            eval_batch_size=eval_batch_size,
         )
         acc = global_eval_result["accuracy"]
         round_result_dir = os.path.join(result_dir, f"round_{epoch + 1}")

@@ -412,6 +412,7 @@ def evaluate_dataset_records(
     return_details=False,
     sample_size=5,
     mistake_sample_size=20,
+    eval_batch_size=16,
 ):
     label_set = sorted(
         {
@@ -446,20 +447,33 @@ def evaluate_dataset_records(
     model_device = next(model.parameters()).device
     autocast_enabled = model_device.type == "cuda"
 
-    for data_point in tqdm(test_set):
+    filtered_records = []
+    for data_point in test_set:
         target = normalize_label(data_point.get("output", data_point.get("response", "")))
         if not target:
             continue
-
         model_input = data_point.get("input", data_point.get("context", ""))
         test_prompt = prompter.generate_prompt(
             STRICT_DIAGNOSIS_INSTRUCTION,
             model_input,
             None,
         )
+        filtered_records.append((data_point, target, model_input, test_prompt))
+
+    if eval_batch_size is None or eval_batch_size <= 0:
+        eval_batch_size = 1
+
+    for start_idx in tqdm(range(0, len(filtered_records), eval_batch_size)):
+        batch_records = filtered_records[start_idx : start_idx + eval_batch_size]
+        batch_prompts = [item[3] for item in batch_records]
 
         with torch.autocast(device_type="cuda", enabled=autocast_enabled):
-            inputs = tokenizer(test_prompt, return_tensors="pt")
+            inputs = tokenizer(
+                batch_prompts,
+                return_tensors="pt",
+                padding=True,
+                truncation=True,
+            )
             input_ids = inputs["input_ids"].to(model_device)
             attention_mask = inputs.get("attention_mask")
             if attention_mask is not None:
@@ -476,45 +490,48 @@ def evaluate_dataset_records(
                     pad_token_id=tokenizer.eos_token_id,
                 )
 
-        generated_tokens = generation_output.sequences[0][input_ids.shape[-1] :]
-        predicted_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
-        predicted_label = coerce_to_known_label(predicted_text)
+        generated_sequences = generation_output.sequences
+        prompt_token_len = input_ids.shape[-1]
+        for i, (data_point, target, model_input, test_prompt) in enumerate(batch_records):
+            generated_tokens = generated_sequences[i][prompt_token_len:]
+            predicted_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
+            predicted_label = coerce_to_known_label(predicted_text)
 
-        if verbose:
-            print("-------------------")
-            print(test_prompt)
-            print("target:", target)
-            print("predicted raw:", predicted_text)
-            print("predicted normalized:", predicted_label)
+            if verbose:
+                print("-------------------")
+                print(test_prompt)
+                print("target:", target)
+                print("predicted raw:", predicted_text)
+                print("predicted normalized:", predicted_label)
 
-        is_correct = predicted_label == target
-        if is_correct:
-            right_count_dict[target] += 1
-        total_count_dict[target] += 1
-        confusion_matrix[target][predicted_label] += 1
+            is_correct = predicted_label == target
+            if is_correct:
+                right_count_dict[target] += 1
+            total_count_dict[target] += 1
+            confusion_matrix[target][predicted_label] += 1
 
-        if len(prediction_samples) < sample_size:
-            prediction_samples.append(
-                {
-                    "instruction": data_point.get("instruction", ""),
-                    "input": model_input,
-                    "target": target,
-                    "predicted_raw": predicted_text,
-                    "predicted_normalized": predicted_label,
-                    "is_correct": is_correct,
-                }
-            )
-        if not is_correct and len(mistake_samples) < mistake_sample_size:
-            mistake_samples.append(
-                {
-                    "instruction": data_point.get("instruction", ""),
-                    "input": model_input,
-                    "target": target,
-                    "predicted_raw": predicted_text,
-                    "predicted_normalized": predicted_label,
-                    "is_correct": False,
-                }
-            )
+            if len(prediction_samples) < sample_size:
+                prediction_samples.append(
+                    {
+                        "instruction": data_point.get("instruction", ""),
+                        "input": model_input,
+                        "target": target,
+                        "predicted_raw": predicted_text,
+                        "predicted_normalized": predicted_label,
+                        "is_correct": is_correct,
+                    }
+                )
+            if not is_correct and len(mistake_samples) < mistake_sample_size:
+                mistake_samples.append(
+                    {
+                        "instruction": data_point.get("instruction", ""),
+                        "input": model_input,
+                        "target": target,
+                        "predicted_raw": predicted_text,
+                        "predicted_normalized": predicted_label,
+                        "is_correct": False,
+                    }
+                )
 
     mean_acc = 0.0
 
@@ -551,7 +568,16 @@ def evaluate_dataset_records(
     return mean_acc
 
 
-def global_evaluation(model, tokenizer, prompter, dev_data_path, return_details=False, sample_size=5, mistake_sample_size=20):
+def global_evaluation(
+    model,
+    tokenizer,
+    prompter,
+    dev_data_path,
+    return_details=False,
+    sample_size=5,
+    mistake_sample_size=20,
+    eval_batch_size=16,
+):
     with open(dev_data_path, "r", encoding="utf-8") as f:
         test_set = json.load(f)
 
@@ -564,4 +590,5 @@ def global_evaluation(model, tokenizer, prompter, dev_data_path, return_details=
         return_details=return_details,
         sample_size=sample_size,
         mistake_sample_size=mistake_sample_size,
+        eval_batch_size=eval_batch_size,
     )

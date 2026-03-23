@@ -1,7 +1,7 @@
 使用本地下载的千问大模型：
 python ./main.py --global_model "E:/fl/models/Qwen2.5-1.5B-Instruct" --num_communication_rounds 10 --local_micro_batch_size 8 --local_batch_size 16
 python ./main.py --global_model "/public/home/wanghaolong/fl/models/Qwen3-4B-Instruct-2507" --output_dir "./lora-Qwen3-4B-Instruct-2507/" --num_communication_rounds 5
-python ./main.py --global_model "/public/home/wanghaolong/fl/models/Qwen2.5-1.5B-Instruct" --num_communication_rounds 500
+python ./main.py --global_model "/public/home/wanghaolong/fl/models/Qwen2.5-1.5B-Instruct" --num_communication_rounds 500 --dev_data_path "/public/home/wanghaolong/fl/fedlora/FedLoRA/dataset/cwru/condition0/test_data_feature.json" --aggregation_algorithm 'haa'
 
 推理
 python ./GlobalModel_generated.py --base_model "E:/fl/models/Qwen2.5-1.5B-Instruct" --lora_weights_path "E:/fl/fedlora/FedLoRA/lora-Qwen2.5-1.5B-Instruct/10/2/adapter_model.bin" --lora_config_path "E:/fl/fedlora/FedLoRA/lora-Qwen2.5-1.5B-Instruct/10" --prompt_template "alpaca"
