@@ -138,7 +138,34 @@ def save_acc_history(acc_list, save_dir, filename="acc_history.json", round_reco
     return save_path
 
 
-def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png"):
+def _moving_average(values, window):
+    if window <= 1 or len(values) <= 1:
+        return np.array(values, dtype=float)
+    series = np.asarray(values, dtype=float)
+    cumsum = np.cumsum(np.insert(series, 0, 0.0))
+    smoothed = (cumsum[window:] - cumsum[:-window]) / float(window)
+    left_pad = np.full(window - 1, smoothed[0], dtype=float)
+    return np.concatenate([left_pad, smoothed])
+
+
+def _nice_tick_step(total_rounds, target_ticks=10):
+    if total_rounds <= 0:
+        return 1
+    raw = float(total_rounds) / float(max(1, target_ticks))
+    magnitude = 10 ** int(np.floor(np.log10(max(raw, 1e-9))))
+    residual = raw / magnitude
+    if residual <= 1:
+        nice = 1
+    elif residual <= 2:
+        nice = 2
+    elif residual <= 5:
+        nice = 5
+    else:
+        nice = 10
+    return int(max(1, nice * magnitude))
+
+
+def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png", x_tick_step=None):
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, filename)
 
@@ -146,26 +173,71 @@ def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png"):
     if not rounds:
         return save_path
 
-    max_xticks = min(10, len(rounds))
-    if len(rounds) <= max_xticks:
-        xticks = rounds
+    if x_tick_step is None:
+        step = _nice_tick_step(len(rounds), target_ticks=10)
     else:
-        step = max(1, math.ceil((len(rounds) - 1) / (max_xticks - 1)))
-        xticks = list(range(1, len(rounds) + 1, step))
-        if xticks[-1] != rounds[-1]:
-            xticks.append(rounds[-1])
+        step = int(max(1, x_tick_step))
+    xticks = list(range(step, len(rounds) + 1, step))
+    if not xticks:
+        xticks = [len(rounds)]
+    elif xticks[-1] != len(rounds):
+        xticks.append(len(rounds))
 
-    figure_width = max(8, min(14, len(rounds) * 0.18))
-    plt.figure(figsize=(figure_width, 5))
-    plt.plot(rounds, acc_list, marker="o", linewidth=2)
-    plt.title("Global Evaluation Accuracy")
-    plt.xlabel("Communication Round")
-    plt.ylabel("Accuracy")
-    plt.xticks(xticks)
-    plt.grid(True, linestyle="--", alpha=0.6)
-    plt.tight_layout()
-    plt.savefig(save_path, dpi=300)
-    plt.close()
+    series = np.asarray(acc_list, dtype=float)
+    smooth_window = max(5, len(series) // 20)
+    smooth_window = min(smooth_window, max(1, len(series)))
+    smooth_acc = _moving_average(series, smooth_window)
+
+    plt.rcParams["font.family"] = "serif"
+    plt.rcParams["font.serif"] = ["Times New Roman", "DejaVu Serif"]
+    figure_width = max(8, min(12, len(rounds) * 0.08))
+    fig, ax = plt.subplots(figsize=(figure_width, 4.8))
+
+    ax.plot(rounds, smooth_acc, color="#1F4E79", linewidth=2.6, label=f"Accuracy Trend (w={smooth_window})")
+
+    best_idx = int(np.argmax(series))
+    final_idx = len(series) - 1
+    ax.scatter(rounds[best_idx], series[best_idx], color="#D62728", s=36, zorder=5, label="Best")
+    ax.scatter(rounds[final_idx], series[final_idx], color="#2CA02C", s=36, zorder=5, label="Final")
+
+    ax.annotate(
+        f"Best {series[best_idx]:.4f} @R{rounds[best_idx]}",
+        xy=(rounds[best_idx], series[best_idx]),
+        xytext=(6, 8),
+        textcoords="offset points",
+        fontsize=10,
+        color="#D62728",
+    )
+    ax.annotate(
+        f"Final {series[final_idx]:.4f}",
+        xy=(rounds[final_idx], series[final_idx]),
+        xytext=(6, -14),
+        textcoords="offset points",
+        fontsize=10,
+        color="#2CA02C",
+    )
+
+    y_min = max(0.0, float(np.min(series)) - 0.03)
+    y_max = min(1.0, float(np.max(series)) + 0.03)
+    if y_max - y_min < 0.08:
+        center = (y_max + y_min) / 2.0
+        y_min = max(0.0, center - 0.04)
+        y_max = min(1.0, center + 0.04)
+
+    ax.set_title("Global Evaluation Accuracy", fontsize=14, pad=8)
+    ax.set_xlabel("Communication Round", fontsize=12)
+    ax.set_ylabel("Accuracy", fontsize=12)
+    ax.set_xticks(xticks)
+    ax.set_ylim(y_min, y_max)
+    ax.tick_params(axis="both", labelsize=11)
+    ax.grid(True, linestyle="--", linewidth=0.8, alpha=0.35)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.legend(frameon=False, fontsize=10, loc="lower right")
+
+    fig.tight_layout()
+    fig.savefig(save_path, dpi=400, bbox_inches="tight")
+    plt.close(fig)
 
     return save_path
 

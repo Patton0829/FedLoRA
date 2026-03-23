@@ -15,6 +15,7 @@ from peft import (
 from fed_utils import (
     FedAvg,
     SCAFFOLD,
+    HAA,
     client_selection,
     evaluate_dataset_records,
     global_evaluation,
@@ -34,6 +35,14 @@ with open(file_path, 'r') as file:
     keys = json.load(file)
 
 datasets.utils.logging.set_verbosity_error()
+
+
+def _is_scaffold_like_algorithm(aggregation_algorithm: str) -> bool:
+    algo = aggregation_algorithm.lower()
+    return algo in {
+        "scaffold",
+        "haa",
+    }
 
 
 def setup_reproducibility(seed: int):
@@ -62,12 +71,14 @@ def fl_finetune(
         # FL hyperparamas
         client_selection_strategy: str = 'random',
         aggregation_algorithm: str = 'scaffold',
+        haa_tau: float = 5.0,
+        heterogeneity_tau: float = None,
         client_selection_frac: float = 0.5,
         num_communication_rounds: int = 200,
         num_clients: int = 10,
         # Local training hyperparams
-        local_batch_size: int = 64,  # 64,
-        local_micro_batch_size: int = 32,
+        local_batch_size: int = 32,  # 64,
+        local_micro_batch_size: int = 16,
         local_num_epochs: int = 1,
         local_learning_rate: float = 1e-4,
         local_val_set_size: int = 0,
@@ -91,6 +102,9 @@ def fl_finetune(
         seed: int = 42,
 ):
     setup_reproducibility(seed)
+    if heterogeneity_tau is not None:
+        # Backward compatibility for older arg name.
+        haa_tau = float(heterogeneity_tau)
 
     if int(os.environ.get("LOCAL_RANK", 0)) == 0:
         print(
@@ -103,6 +117,7 @@ def fl_finetune(
             f"client_selection_frac: {client_selection_frac}\n"
             f"num_communication_rounds: {num_communication_rounds}\n"
             f"num_clients: {num_clients}\n"
+            f"haa_tau: {haa_tau}\n"
             f"local_batch_size: {local_batch_size}\n"
             f"local_micro_batch_size: {local_micro_batch_size}\n"
             f"local_num_epochs: {local_num_epochs}\n"
@@ -322,7 +337,7 @@ def fl_finetune(
             client.preprare_local_dataset(generate_and_tokenize_prompt, local_val_set_size, seed)
             server_control = None
             client_control = None
-            if aggregation_algorithm.lower() == "scaffold":
+            if _is_scaffold_like_algorithm(aggregation_algorithm):
                 if scaffold_state is not None:
                     server_control = scaffold_state.get("server_control")
                     client_control = scaffold_state.get("client_controls", {}).get(client_id)
@@ -392,6 +407,19 @@ def fl_finetune(
                 num_clients=num_clients,
                 local_steps=local_step_count_dict,
                 local_lr=local_learning_rate,
+            )
+        elif aggregation_algorithm.lower() == "haa":
+            model, scaffold_state = HAA(
+                model,
+                selected_clients_set,
+                output_dir,
+                local_dataset_len_dict,
+                epoch,
+                scaffold_state=scaffold_state,
+                num_clients=num_clients,
+                local_steps=local_step_count_dict,
+                local_lr=local_learning_rate,
+                tau=haa_tau,
             )
         else:
             model = FedAvg(model,

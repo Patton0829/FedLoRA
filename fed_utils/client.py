@@ -14,6 +14,14 @@ def _control_key_from_param_name(param_name):
     return param_name.replace(".default", "")
 
 
+def _use_scaffold_like_training(fl_algorithm):
+    algo = fl_algorithm.lower()
+    return algo in {
+        "scaffold",
+        "haa",
+    }
+
+
 class SCAFFOLDTrainer(transformers.Trainer):
     def create_optimizer(self):
         if self.optimizer is None:
@@ -115,7 +123,7 @@ class GeneralClient:
                             client_control=None,
                             seed=42):
         use_cuda = torch.cuda.is_available()
-        is_scaffold = fl_algorithm.lower() == "scaffold"
+        is_scaffold = _use_scaffold_like_training(fl_algorithm)
         self.train_args = transformers.TrainingArguments(
             per_device_train_batch_size=local_micro_batch_size,
             gradient_accumulation_steps=gradient_accumulation_steps,
