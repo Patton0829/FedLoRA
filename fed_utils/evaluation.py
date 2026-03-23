@@ -193,29 +193,7 @@ def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png", x_tick_step=Non
     figure_width = max(8, min(12, len(rounds) * 0.08))
     fig, ax = plt.subplots(figsize=(figure_width, 4.8))
 
-    ax.plot(rounds, smooth_acc, color="#1F4E79", linewidth=2.6, label=f"Accuracy Trend (w={smooth_window})")
-
-    best_idx = int(np.argmax(series))
-    final_idx = len(series) - 1
-    ax.scatter(rounds[best_idx], series[best_idx], color="#D62728", s=36, zorder=5, label="Best")
-    ax.scatter(rounds[final_idx], series[final_idx], color="#2CA02C", s=36, zorder=5, label="Final")
-
-    ax.annotate(
-        f"Best {series[best_idx]:.4f} @R{rounds[best_idx]}",
-        xy=(rounds[best_idx], series[best_idx]),
-        xytext=(6, 8),
-        textcoords="offset points",
-        fontsize=10,
-        color="#D62728",
-    )
-    ax.annotate(
-        f"Final {series[final_idx]:.4f}",
-        xy=(rounds[final_idx], series[final_idx]),
-        xytext=(6, -14),
-        textcoords="offset points",
-        fontsize=10,
-        color="#2CA02C",
-    )
+    ax.plot(rounds, smooth_acc, color="#1F4E79", linewidth=2.6, label="Accuracy Trend")
 
     y_min = max(0.0, float(np.min(series)) - 0.03)
     y_max = min(1.0, float(np.max(series)) + 0.03)
@@ -233,8 +211,6 @@ def plot_acc_curve(acc_list, save_dir, filename="acc_curve.png", x_tick_step=Non
     ax.grid(True, linestyle="--", linewidth=0.8, alpha=0.35)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(frameon=False, fontsize=10, loc="lower right")
-
     fig.tight_layout()
     fig.savefig(save_path, dpi=400, bbox_inches="tight")
     plt.close(fig)
