@@ -1,6 +1,7 @@
 import os
 import random
 import re
+import shutil
 from typing import List
 from tqdm import tqdm
 import fire
@@ -83,6 +84,7 @@ def fl_finetune(
         local_learning_rate: float = 1e-4,
         local_val_set_size: int = 0,
         eval_batch_size: int = 16,
+        global_eval_every_rounds: int = 10,
         local_save_steps: int = 3,
         cutoff_len: int = 512,
         # LoRA hyperparams
@@ -125,6 +127,7 @@ def fl_finetune(
             f"local_learning_rate: {local_learning_rate}\n"
             f"local_val_set_size: {local_val_set_size}\n"
             f"eval_batch_size: {eval_batch_size}\n"
+            f"global_eval_every_rounds: {global_eval_every_rounds}\n"
             f"local_save_steps: {local_save_steps}\n"
             f"cutoff_len: {cutoff_len}\n"
             f"lora_r: {lora_r}\n"
@@ -151,7 +154,10 @@ def fl_finetune(
     gradient_accumulation_steps = local_batch_size // local_micro_batch_size
     prompter = Prompter(prompt_template_name)
     use_cuda = torch.cuda.is_available()
-    load_dtype = torch.float16 if use_cuda else torch.float32
+    use_bf16 = use_cuda and torch.cuda.is_bf16_supported()
+    load_dtype = torch.bfloat16 if use_bf16 else (torch.float16 if use_cuda else torch.float32)
+    if use_cuda:
+        print(f"Mixed precision mode: {'bf16' if use_bf16 else 'fp16'}")
     device_map = {"": 0} if use_cuda else None
     world_size = int(os.environ.get("WORLD_SIZE", 1))
     ddp = world_size != 1
@@ -174,21 +180,21 @@ def fl_finetune(
         model = GPT2LMHeadModel.from_pretrained(
             global_model,
             load_in_8bit=False,
-            dtype=load_dtype,
+            torch_dtype=load_dtype,
             device_map=device_map,
         )
     elif global_model == 'google/gemma-2b' or global_model == 'google/gemma-7b':
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
             load_in_8bit=False,
-            dtype=load_dtype,
+            torch_dtype=load_dtype,
             device_map=device_map,
             token=keys["hf_token"],
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(
             global_model,
-            dtype=load_dtype,
+            torch_dtype=load_dtype,
             device_map=device_map,
             token=keys["hf_token"],
         )
@@ -431,51 +437,67 @@ def fl_finetune(
                            local_dataset_len_dict,
                            epoch,
                            )
-        torch.save(model.state_dict(), os.path.join(output_dir, str(epoch), "adapter_model.bin"))
-        config.save_pretrained(output_dir)
 
-        # Please design the evaluation method based on your specific requirements in the fed_utils/evaluation.py file.
-        global_eval_result = global_evaluation(
-            model,
-            tokenizer,
-            prompter,
-            dev_data_path,
-            return_details=True,
-            sample_size=0,
-            mistake_sample_size=20,
-            eval_batch_size=eval_batch_size,
+        should_eval = ((epoch + 1) % max(1, int(global_eval_every_rounds)) == 0) or (
+            epoch == num_communication_rounds - 1
         )
-        acc = global_eval_result["accuracy"]
-        round_result_dir = os.path.join(result_dir, f"round_{epoch + 1}")
-        mistakes_filename = "mistake_samples.json"
-        confusion_filename = "confusion_matrix.json"
-        confusion_png_filename = "confusion_matrix.png"
-        save_prediction_samples(global_eval_result["mistake_samples"], round_result_dir, mistakes_filename)
-        save_confusion_matrix(global_eval_result["confusion_matrix"], round_result_dir, confusion_filename)
-        plot_confusion_matrix_heatmap(
-            global_eval_result["confusion_matrix"],
-            round_result_dir,
-            filename=confusion_png_filename,
-            title=f"Round {epoch + 1} Global Confusion Matrix",
-        )
-        print('Acc of Epoch', str(epoch), 'is:', acc)
-        acc_list.append(acc)
-        round_records.append(
-            {
-                "round": int(epoch + 1),
-                "selected_clients": sorted(int(client_id) for client_id in selected_clients_set),
-                "local_client_metrics": local_client_metrics,
-                "global_eval_file": dev_data_path,
-                "global_prediction_samples_file": None,
-                "global_mistakes_file": os.path.join(round_result_dir, mistakes_filename),
-                "global_confusion_matrix_file": os.path.join(round_result_dir, confusion_filename),
-                "global_confusion_matrix_png_file": os.path.join(round_result_dir, confusion_png_filename),
-                "global_per_label_accuracy": global_eval_result["per_label_accuracy"],
-                "accuracy": float(acc),
-            }
-        )
-        save_acc_history(acc_list, result_dir, round_records=round_records)
-        plot_acc_curve(acc_list, result_dir)
+        if should_eval:
+            # Please design the evaluation method based on your specific requirements in the fed_utils/evaluation.py file.
+            global_eval_result = global_evaluation(
+                model,
+                tokenizer,
+                prompter,
+                dev_data_path,
+                return_details=True,
+                sample_size=0,
+                mistake_sample_size=20,
+                eval_batch_size=eval_batch_size,
+            )
+            acc = global_eval_result["accuracy"]
+            round_result_dir = os.path.join(result_dir, f"round_{epoch + 1}")
+            os.makedirs(result_dir, exist_ok=True)
+            for dirname in os.listdir(result_dir):
+                if dirname.startswith("round_"):
+                    stale_round_dir = os.path.join(result_dir, dirname)
+                    if os.path.isdir(stale_round_dir) and stale_round_dir != round_result_dir:
+                        shutil.rmtree(stale_round_dir, ignore_errors=True)
+
+            mistakes_filename = "mistake_samples.json"
+            confusion_filename = "confusion_matrix.json"
+            confusion_png_filename = "confusion_matrix.png"
+            save_prediction_samples(global_eval_result["mistake_samples"], round_result_dir, mistakes_filename)
+            save_confusion_matrix(global_eval_result["confusion_matrix"], round_result_dir, confusion_filename)
+            plot_confusion_matrix_heatmap(
+                global_eval_result["confusion_matrix"],
+                round_result_dir,
+                filename=confusion_png_filename,
+                title=f"Round {epoch + 1} Global Confusion Matrix",
+            )
+            print('Acc of Epoch', str(epoch), 'is:', acc)
+            acc_list.append(acc)
+            round_records.append(
+                {
+                    "round": int(epoch + 1),
+                    "selected_clients": sorted(int(client_id) for client_id in selected_clients_set),
+                    "local_client_metrics": local_client_metrics,
+                    "global_eval_file": dev_data_path,
+                    "global_prediction_samples_file": None,
+                    "global_mistakes_file": os.path.join(round_result_dir, mistakes_filename),
+                    "global_confusion_matrix_file": os.path.join(round_result_dir, confusion_filename),
+                    "global_confusion_matrix_png_file": os.path.join(round_result_dir, confusion_png_filename),
+                    "global_per_label_accuracy": global_eval_result["per_label_accuracy"],
+                    "accuracy": float(acc),
+                }
+            )
+            save_acc_history(acc_list, result_dir, round_records=round_records)
+            plot_acc_curve(acc_list, result_dir)
+        else:
+            print(f"Skip global evaluation at round {epoch + 1} (evaluate every {global_eval_every_rounds} rounds).")
+
+        # Keep only the final global adapter/config; remove round artifacts after aggregation.
+        round_output_dir = os.path.join(output_dir, str(epoch))
+        if os.path.isdir(round_output_dir):
+            shutil.rmtree(round_output_dir, ignore_errors=True)
 
 
     print(acc_list)

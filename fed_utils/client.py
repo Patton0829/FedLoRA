@@ -123,6 +123,7 @@ class GeneralClient:
                             client_control=None,
                             seed=42):
         use_cuda = torch.cuda.is_available()
+        use_bf16 = use_cuda and torch.cuda.is_bf16_supported()
         is_scaffold = _use_scaffold_like_training(fl_algorithm)
         self.train_args = transformers.TrainingArguments(
             per_device_train_batch_size=local_micro_batch_size,
@@ -130,7 +131,8 @@ class GeneralClient:
             warmup_steps=0,
             num_train_epochs=local_num_epochs,
             learning_rate=local_learning_rate,
-            fp16=use_cuda,
+            fp16=use_cuda and not use_bf16,
+            bf16=use_bf16,
             logging_steps=1,
             optim="adamw_torch",
             eval_strategy="steps" if self.local_val_set_size > 0 else "no",
