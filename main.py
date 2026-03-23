@@ -67,7 +67,7 @@ def fl_finetune(
         # model/data params
         global_model: str = '',
         data_path: str = './data',
-        dev_data_path: str = './dataset/jnu/jnu_test_with_labels_100.json',
+        dev_data_path: str = './data/10/global_test.json',
         output_dir: str = './lora-Qwen2.5-1.5B-Instruct/',
         # FL hyperparamas
         client_selection_strategy: str = 'random',
