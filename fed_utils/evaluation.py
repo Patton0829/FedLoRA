@@ -3,7 +3,6 @@ import math
 import os
 import random
 import re
-from difflib import SequenceMatcher
 
 import datasets
 import matplotlib.pyplot as plt
@@ -24,6 +23,7 @@ KNOWN_LABELS = [
     "inner race fault",
     "outer race fault",
 ]
+UNKNOWN_LABEL = "unknown"
 LABEL_ABBREVIATIONS = {
     "normal": "N",
     "ball fault": "BF",
@@ -102,24 +102,47 @@ def normalize_label(text):
 
 
 def coerce_to_known_label(predicted_text):
-    normalized = normalize_label(predicted_text)
-    if normalized in KNOWN_LABELS:
-        return normalized
+    """
+    Strict label matching for predictions:
+    only exact (normalized) label/alias matches are accepted;
+    otherwise return UNKNOWN_LABEL.
+    """
+    if predicted_text is None:
+        return UNKNOWN_LABEL
 
-    if not normalized:
-        return "normal"
+    candidate = str(predicted_text).strip().lower()
+    if not candidate:
+        return UNKNOWN_LABEL
 
-    best_label = KNOWN_LABELS[0]
-    best_score = -1.0
-    for label in KNOWN_LABELS:
-        score = SequenceMatcher(None, normalized, label).ratio()
-        if label.split()[0] in normalized or normalized.split()[0] in label:
-            score += 0.15
-        if score > best_score:
-            best_score = score
-            best_label = label
+    # Keep only the first line to avoid free-form continuation content.
+    candidate = candidate.splitlines()[0].strip()
+    # Remove common trailing punctuation/symbols.
+    candidate = re.sub(r"[\s\.,;:!?\-_/\\|]+$", "", candidate)
+    candidate = re.sub(r"^[\s\.,;:!?\-_/\\|]+", "", candidate)
 
-    return best_label
+    alias_map = {
+        "bearing is normal": "normal",
+        "healthy": "normal",
+        "healthy bearing": "normal",
+        "n": "normal",
+        "bf": "ball fault",
+        "irf": "inner race fault",
+        "orf": "outer race fault",
+        "ball": "ball fault",
+        "ballfault": "ball fault",
+        "inner race": "inner race fault",
+        "inner-race fault": "inner race fault",
+        "inner ring fault": "inner race fault",
+        "outer race": "outer race fault",
+        "outer-race fault": "outer race fault",
+        "outer ring fault": "outer race fault",
+    }
+
+    if candidate in KNOWN_LABELS:
+        return candidate
+    if candidate in alias_map:
+        return alias_map[candidate]
+    return UNKNOWN_LABEL
 
 
 def save_acc_history(acc_list, save_dir, filename="acc_history.json", round_records=None):
@@ -402,7 +425,7 @@ def evaluate_dataset_records(
     acc_count_dict = dict.fromkeys(label_set, 0)
     prediction_samples = []
     mistake_samples = []
-    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS))
+    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS) | {UNKNOWN_LABEL})
     confusion_matrix = {label: {pred_label: 0 for pred_label in confusion_labels} for label in confusion_labels}
 
     sampling_kwargs = {
