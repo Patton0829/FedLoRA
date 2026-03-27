@@ -95,6 +95,18 @@ def parse_args():
         help="Output root dir; data will be saved into <output_root>/<num_clients>/",
     )
     parser.add_argument("--dirichlet_alpha", type=float, default=None, help="Dirichlet alpha for non-IID split.")
+    parser.add_argument(
+        "--train_sample_size",
+        type=int,
+        default=1400,
+        help="Total train samples to keep from the selected condition for fast training.",
+    )
+    parser.add_argument(
+        "--test_sample_size",
+        type=int,
+        default=None,
+        help="Optional total test samples to keep from the selected condition. Default keeps full test set.",
+    )
     parser.add_argument("--seed", type=int, default=42, help="Random seed.")
     return parser.parse_args()
 
@@ -119,6 +131,40 @@ def load_json_records(path):
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def stratified_sample(records, sample_size, seed):
+    if sample_size is None or sample_size <= 0 or sample_size >= len(records):
+        return list(records)
+
+    rng = random.Random(seed)
+    groups = {}
+    for rec in records:
+        label = rec.get("output", "")
+        groups.setdefault(label, []).append(rec)
+
+    labels = sorted(groups.keys())
+    for label in labels:
+        rng.shuffle(groups[label])
+
+    base = sample_size // max(1, len(labels))
+    remainder = sample_size % max(1, len(labels))
+
+    sampled = []
+    for i, label in enumerate(labels):
+        take = base + (1 if i < remainder else 0)
+        take = min(take, len(groups[label]))
+        sampled.extend(groups[label][:take])
+
+    if len(sampled) < sample_size:
+        leftovers = []
+        for label in labels:
+            leftovers.extend(groups[label][len([x for x in sampled if x.get("output", "") == label]) :])
+        rng.shuffle(leftovers)
+        sampled.extend(leftovers[: sample_size - len(sampled)])
+
+    rng.shuffle(sampled)
+    return sampled[:sample_size]
 
 
 def plot_client_distribution(distribution_by_client, save_dir):
@@ -219,6 +265,8 @@ def main():
 
     train_records = load_json_records(train_path)
     test_records = load_json_records(test_path)
+    train_records = stratified_sample(train_records, args.train_sample_size, args.seed)
+    test_records = stratified_sample(test_records, args.test_sample_size, args.seed + 1)
 
     data_path = os.path.join(args.output_root, str(args.num_clients))
     os.makedirs(data_path, exist_ok=True)
@@ -286,6 +334,8 @@ def main():
     print(f"Done. Output dir: {data_path}")
     print(f"Train source: {train_path}")
     print(f"Test source: {test_path}")
+    print(f"Train samples used: {len(train_records)}")
+    print(f"Test samples used: {len(test_records)}")
 
 
 if __name__ == "__main__":
