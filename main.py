@@ -82,6 +82,7 @@ def fl_finetune(
         local_micro_batch_size: int = 16,
         local_num_epochs: int = 1,
         local_learning_rate: float = 1e-4,
+        local_lr_scheduler_type: str = "cosine",
         local_val_set_size: int = 0,
         eval_batch_size: int = 16,
         global_eval_every_rounds: int = 10,
@@ -125,6 +126,7 @@ def fl_finetune(
             f"local_micro_batch_size: {local_micro_batch_size}\n"
             f"local_num_epochs: {local_num_epochs}\n"
             f"local_learning_rate: {local_learning_rate}\n"
+            f"local_lr_scheduler_type: {local_lr_scheduler_type}\n"
             f"local_val_set_size: {local_val_set_size}\n"
             f"eval_batch_size: {eval_batch_size}\n"
             f"global_eval_every_rounds: {global_eval_every_rounds}\n"
@@ -206,10 +208,23 @@ def fl_finetune(
     else:
         tokenizer = AutoTokenizer.from_pretrained(global_model, token=keys["hf_token"])
 
-    tokenizer.pad_token_id = (
-        0
-    )
+    # Prefer model/tokenizer native special-token configuration.
+    # Fallback to eos token only when pad token is missing.
+    if tokenizer.pad_token_id is None:
+        if tokenizer.eos_token_id is not None:
+            tokenizer.pad_token_id = tokenizer.eos_token_id
+        elif model.config.eos_token_id is not None:
+            tokenizer.pad_token_id = model.config.eos_token_id
+            if tokenizer.pad_token is None and tokenizer.eos_token is not None:
+                tokenizer.pad_token = tokenizer.eos_token
+
+    if model.config.pad_token_id is None and tokenizer.pad_token_id is not None:
+        model.config.pad_token_id = tokenizer.pad_token_id
     tokenizer.padding_side = "left"
+    print(
+        f"Tokenizer special tokens: pad_token_id={tokenizer.pad_token_id}, "
+        f"eos_token_id={tokenizer.eos_token_id}, bos_token_id={tokenizer.bos_token_id}"
+    )
 
     
 
@@ -354,6 +369,7 @@ def fl_finetune(
                                        gradient_accumulation_steps,
                                        local_num_epochs,
                                        local_learning_rate,
+                                       local_lr_scheduler_type,
                                        group_by_length,
                                        ddp,
                                        fl_algorithm=aggregation_algorithm,

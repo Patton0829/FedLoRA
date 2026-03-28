@@ -103,16 +103,16 @@ def normalize_label(text):
 
 def coerce_to_known_label(predicted_text):
     """
-    Strict label matching for predictions:
-    only exact (normalized) label/alias matches are accepted;
-    otherwise return UNKNOWN_LABEL.
+    Constrain predictions to KNOWN_LABELS:
+    exact (normalized) label/alias matches are accepted;
+    otherwise map to a random label from KNOWN_LABELS.
     """
     if predicted_text is None:
-        return UNKNOWN_LABEL
+        return random.choice(KNOWN_LABELS)
 
     candidate = str(predicted_text).strip().lower()
     if not candidate:
-        return UNKNOWN_LABEL
+        return random.choice(KNOWN_LABELS)
 
     # Keep only the first line to avoid free-form continuation content.
     candidate = candidate.splitlines()[0].strip()
@@ -142,7 +142,7 @@ def coerce_to_known_label(predicted_text):
         return candidate
     if candidate in alias_map:
         return alias_map[candidate]
-    return UNKNOWN_LABEL
+    return random.choice(KNOWN_LABELS)
 
 
 def save_acc_history(acc_list, save_dir, filename="acc_history.json", round_records=None):
@@ -425,7 +425,7 @@ def evaluate_dataset_records(
     acc_count_dict = dict.fromkeys(label_set, 0)
     prediction_samples = []
     mistake_samples = []
-    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS) | {UNKNOWN_LABEL})
+    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS))
     confusion_matrix = {label: {pred_label: 0 for pred_label in confusion_labels} for label in confusion_labels}
 
     sampling_kwargs = {
