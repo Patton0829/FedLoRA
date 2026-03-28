@@ -74,7 +74,7 @@ def fl_finetune(
         aggregation_algorithm: str = 'scaffold',
         haa_tau: float = 5.0,
         heterogeneity_tau: float = None,
-        client_selection_frac: float = 0.5,
+        client_selection_frac: float = 1.0,
         num_communication_rounds: int = 200,
         num_clients: int = 10,
         # Local training hyperparams
@@ -85,6 +85,7 @@ def fl_finetune(
         local_lr_scheduler_type: str = "cosine",
         local_val_set_size: int = 0,
         eval_batch_size: int = 16,
+        label_parse_max_tokens: int = 4,
         global_eval_every_rounds: int = 10,
         local_save_steps: int = 3,
         cutoff_len: int = 512,
@@ -129,6 +130,7 @@ def fl_finetune(
             f"local_lr_scheduler_type: {local_lr_scheduler_type}\n"
             f"local_val_set_size: {local_val_set_size}\n"
             f"eval_batch_size: {eval_batch_size}\n"
+            f"label_parse_max_tokens: {label_parse_max_tokens}\n"
             f"global_eval_every_rounds: {global_eval_every_rounds}\n"
             f"local_save_steps: {local_save_steps}\n"
             f"cutoff_len: {cutoff_len}\n"
@@ -391,6 +393,7 @@ def fl_finetune(
                     client.local_eval_records,
                     dataset_name=f"Client_{client_id} Local Evaluation",
                     eval_batch_size=eval_batch_size,
+                    label_parse_max_tokens=label_parse_max_tokens,
                 )
                 local_client_metrics.append(
                     {
@@ -465,10 +468,11 @@ def fl_finetune(
                 prompter,
                 dev_data_path,
                 return_details=True,
-                sample_size=0,
-                mistake_sample_size=20,
-                eval_batch_size=eval_batch_size,
-            )
+            sample_size=0,
+            mistake_sample_size=20,
+            eval_batch_size=eval_batch_size,
+            label_parse_max_tokens=label_parse_max_tokens,
+        )
             acc = global_eval_result["accuracy"]
             round_result_dir = os.path.join(result_dir, f"round_{epoch + 1}")
             os.makedirs(result_dir, exist_ok=True)

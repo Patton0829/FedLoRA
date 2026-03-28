@@ -103,16 +103,18 @@ def normalize_label(text):
 
 def coerce_to_known_label(predicted_text):
     """
-    Constrain predictions to KNOWN_LABELS:
-    exact (normalized) label/alias matches are accepted;
-    otherwise map to a random label from KNOWN_LABELS.
+    Deterministic label coercion:
+    - Prefer exact/alias matches on the first generated line.
+    - If the line starts with a known label token (even followed by noise),
+      map to that label.
+    - Otherwise return UNKNOWN_LABEL.
     """
     if predicted_text is None:
-        return random.choice(KNOWN_LABELS)
+        return UNKNOWN_LABEL
 
     candidate = str(predicted_text).strip().lower()
     if not candidate:
-        return random.choice(KNOWN_LABELS)
+        return UNKNOWN_LABEL
 
     # Keep only the first line to avoid free-form continuation content.
     candidate = candidate.splitlines()[0].strip()
@@ -142,7 +144,14 @@ def coerce_to_known_label(predicted_text):
         return candidate
     if candidate in alias_map:
         return alias_map[candidate]
-    return random.choice(KNOWN_LABELS)
+
+    for label in KNOWN_LABELS:
+        if candidate.startswith(label):
+            return label
+    for alias, label in alias_map.items():
+        if candidate.startswith(alias):
+            return label
+    return UNKNOWN_LABEL
 
 
 def save_acc_history(acc_list, save_dir, filename="acc_history.json", round_records=None):
@@ -412,6 +421,7 @@ def evaluate_dataset_records(
     sample_size=5,
     mistake_sample_size=20,
     eval_batch_size=16,
+    label_parse_max_tokens=4,
 ):
     label_set = sorted(
         {
@@ -425,7 +435,7 @@ def evaluate_dataset_records(
     acc_count_dict = dict.fromkeys(label_set, 0)
     prediction_samples = []
     mistake_samples = []
-    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS))
+    confusion_labels = sorted(set(label_set) | set(KNOWN_LABELS) | {UNKNOWN_LABEL})
     confusion_matrix = {label: {pred_label: 0 for pred_label in confusion_labels} for label in confusion_labels}
 
     sampling_kwargs = {
@@ -494,13 +504,16 @@ def evaluate_dataset_records(
         for i, (data_point, target, model_input, test_prompt) in enumerate(batch_records):
             generated_tokens = generated_sequences[i][prompt_token_len:]
             predicted_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
-            predicted_label = coerce_to_known_label(predicted_text)
+            label_parse_tokens = generated_tokens[:label_parse_max_tokens]
+            predicted_prefix = tokenizer.decode(label_parse_tokens, skip_special_tokens=True).strip()
+            predicted_label = coerce_to_known_label(predicted_prefix)
 
             if verbose:
                 print("-------------------")
                 print(test_prompt)
                 print("target:", target)
                 print("predicted raw:", predicted_text)
+                print("predicted prefix:", predicted_prefix)
                 print("predicted normalized:", predicted_label)
 
             is_correct = predicted_label == target
@@ -516,6 +529,7 @@ def evaluate_dataset_records(
                         "input": model_input,
                         "target": target,
                         "predicted_raw": predicted_text,
+                        "predicted_prefix": predicted_prefix,
                         "predicted_normalized": predicted_label,
                         "is_correct": is_correct,
                     }
@@ -527,6 +541,7 @@ def evaluate_dataset_records(
                         "input": model_input,
                         "target": target,
                         "predicted_raw": predicted_text,
+                        "predicted_prefix": predicted_prefix,
                         "predicted_normalized": predicted_label,
                         "is_correct": False,
                     }
@@ -576,6 +591,7 @@ def global_evaluation(
     sample_size=5,
     mistake_sample_size=20,
     eval_batch_size=16,
+    label_parse_max_tokens=4,
 ):
     with open(dev_data_path, "r", encoding="utf-8") as f:
         test_set = json.load(f)
@@ -590,4 +606,5 @@ def global_evaluation(
         sample_size=sample_size,
         mistake_sample_size=mistake_sample_size,
         eval_batch_size=eval_batch_size,
+        label_parse_max_tokens=label_parse_max_tokens,
     )
